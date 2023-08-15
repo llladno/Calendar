@@ -1,0 +1,14 @@
+<ng-container>
+  <app-menu></app-menu>
+  <h1>Registration</h1>
+  <form [formGroup]="groupControl" (submit)="submitForm()">
+    <h1>Имя</h1>
+    <input name="username" formControlName="nameControl">
+    <h1>Почта</h1>
+    <input name="email" formControlName="emailControl">
+    <h1>Телефон</h1>
+    <input name="phone" formControlName="phoneControl">
+    <button type="submit">Submit</button>
+  </form>
+  <button (click)="check()">Check</button>
+</ng-container>
