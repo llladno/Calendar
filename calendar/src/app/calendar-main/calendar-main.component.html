@@ -1,0 +1,21 @@
+<div class="calendarPlace">
+  <app-table-head class="headPlace"></app-table-head>
+  <div *ngFor="let c of days" class="days">
+    <h1 class="HDays">{{c}}</h1>
+  </div>
+  <div *ngFor="let b of mass">
+    <div *ngIf="b.lastMonth" class="lastMonth">
+      <button class="lastMonthBtn">
+        {{b.lastMonth}}
+      </button>
+    </div>
+    <div *ngIf="b.thisMonth" class="thisMonth">
+        <a [routerLink]="['day',b.thisMonth]"
+           [queryParams]="{'day':b.thisMonth, 'month':data.month, 'year':data.year}">
+          <button class="thisMonthBtn" (click)="selectDay($event)">
+            {{b.thisMonth}}
+          </button>
+        </a>
+    </div>
+  </div>
+</div>

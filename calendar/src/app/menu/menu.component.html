@@ -1,15 +1,28 @@
-<div>
+<div class="menuBorder">
   <div>
-    <div class="point_menu"></div>
-    <div class="point_menu"></div>
-    <div class="point_menu"></div>
+    <button (click)="menubar()" class="rotatePointMenu">
+      <div class="point_menu"></div>
+      <div class="point_menu"></div>
+      <div class="point_menu"></div>
+    </button>
   </div>
-  <div>
-    <div class="cercle"></div>
+  <div class="profileDisplay">
+    <div class="profile"></div>
+    <div class="userLogin">
+      <h1 class="profileText">{{user?.login}}</h1>
+      <h3>Профиль</h3>
+    </div>
   </div>
-  <div>
-    <div><button></button></div>
-    <div><button></button></div>
-    <div><button></button></div>
+  <div class="pointMenu">
+      <img src="assets/img/icon/barIcon/calendar.png">
+    <a routerLink="/">
+      <button class="pointsMenuButton">Календарь</button>
+    </a>
+      <img src="assets/img/icon/barIcon/todo.png">
+    <button class="pointsMenuButton">TODO</button>
+      <img src="assets/img/icon/barIcon/settings.png">
+    <button class="pointsMenuButton">Настройки</button>
+      <button (click)="window.location.href = '/login'">Выйти</button>
   </div>
+
 </div>

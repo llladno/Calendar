@@ -1,0 +1,14 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/llladno/Calendar.git",
+  "author": "llladno <man30968@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start-part1": "cd calendar && ng serve",
+    "start-part2": "cd back && nodemon indexBack.js",
+    "front": "yarn start-part1",
+    "back": "yarn start-part2"
+  }
+}

@@ -1,0 +1,9 @@
+<form [formGroup]="groupControl" (submit)="submitForm()">
+  <h1>Почта</h1>
+  <input name="email" formControlName="emailControl">
+  <h1>Пароль</h1>
+  <input name="password" formControlName="passwordControl">
+  <button type="submit">Submit</button>
+  <button routerLink="/registration">Регистрация</button>
+</form>
+<div *ngIf = "!sucsessful">Заполните все поля!</div>

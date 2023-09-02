@@ -1,6 +1,79 @@
-.cercle{
+button{
+  border: none;
+  background: none;
+}
+
+
+.point_menu{
+  height: 7px;
+  background: blue;
+  border-radius: 20px;
+  margin: 2px;
+  width: 38px;
+  cursor: pointer;
+}
+
+
+.profile{
   width: 50px;
   height: 50px;
   border-radius: 50px;
+  margin: 20px;
   background: blue;
+}
+
+.menuBorder{
+  padding: 20px;
+  border: 1px solid black;
+  transition: all 0.5s ease-out;
+  width: 100%;
+  max-width: 250px;
+  border-radius: 0px 20px 20px 0px;
+  overflow: hidden;
+}
+
+.userLogin{
+  opacity: 1;
+  transition: all 0.25s ease-out;
+  width: 50%;
+}
+
+.rotatePointMenu{
+  margin-left: 20px;
+  transition: all 0.5s ease-out;
+}
+
+.pointsMenuButton{
+  font-size: 22px;
+  opacity: 1;
+  transition: all 0.25s ease-out;
+}
+
+.pointsMenuButton:hover{
+  color: #646464;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 20px;
+  padding: 0px 20px 0px 20px;
+}
+
+
+.profileDisplay{
+  display: flex;
+
+}
+
+.profileText{
+  margin: 0px;
+}
+
+.pointMenu{
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  justify-items: start;
+  row-gap: 25px;
+  margin-left: 20px;
+}
+
+img{
+  width: 50px;
 }

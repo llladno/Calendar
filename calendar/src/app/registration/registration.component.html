@@ -1,14 +1,17 @@
 <ng-container>
-  <app-menu></app-menu>
-  <h1>Registration</h1>
-  <form [formGroup]="groupControl" (submit)="submitForm()">
-    <h1>Имя</h1>
-    <input name="username" formControlName="nameControl">
-    <h1>Почта</h1>
-    <input name="email" formControlName="emailControl">
-    <h1>Телефон</h1>
-    <input name="phone" formControlName="phoneControl">
-    <button type="submit">Submit</button>
-  </form>
-  <button (click)="check()">Check</button>
+  <app-loading *ngIf="loading"></app-loading>
+  <div *ngIf="!loading">
+    <h1>Registration</h1>
+    <div *ngIf = '!sucseccful'>
+      <form [formGroup]="groupControl" (submit)="submitForm()">
+        <h1>Логин</h1>
+        <input name="login" formControlName="loginControl">
+        <h1>Почта</h1>
+        <input name="email" formControlName="emailControl">
+        <h1>Пароль</h1>
+        <input name="password" formControlName="passwordControl">
+        <button type="submit">Зарегистрироваться</button>
+      </form>
+    </div>
+  </div>
 </ng-container>

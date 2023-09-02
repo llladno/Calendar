@@ -1,0 +1,22 @@
+<div class="displayHomepage">
+  <app-menu></app-menu>
+  <div class="calendarPlace">
+    <app-table-head [data]='data' class="headPlace"></app-table-head>
+    <div class="timeGrid">
+      <div class="userPlace">
+        <div class="minutes"></div>
+        <div *ngFor="let m of minutes; let i = index" class="minutes">
+          <h1>
+            {{i+"0"}}
+          </h1>
+        </div>
+      </div>
+      <div *ngFor="let t of times; let i = index" class="userPlace">
+        <h1 class="times">{{i.toString().length === 1 ? "0"+i : i}}</h1>
+        <div *ngFor="let m of minutes; let c = index" class="minutes time:{{i}} {{c+'0'}}" (click)="clickPlace($event)">
+          {{""}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

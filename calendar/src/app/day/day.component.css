@@ -1,0 +1,33 @@
+.timeGrid{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1px;
+  background: #646464;
+  border: 1px solid #646464;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.userPlace{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: #646464;
+}
+
+.minutes{
+}
+
+.minutes, .times{
+  margin: 0;
+  text-align: center;
+  padding: 20px 0px 20px 0px;
+  background: white;
+}
+
+h1{
+  margin: 0;
+}
+
+.times {
+}

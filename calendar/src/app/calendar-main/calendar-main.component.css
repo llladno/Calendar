@@ -1,0 +1,46 @@
+.calendarPlace{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  grid-gap: 1px;
+  background: #afafaf;
+}
+
+.lastMonth{
+  color: #ff0000;
+}
+
+.lastMonthBtn, .thisMonthBtn, .days{
+  font-size: 18px;
+  font-weight: 600;
+  padding-top: 15px;
+  display: flex;
+  color: #3b3b3b;
+  justify-content: center;
+  background: #fff;
+  margin: 0;
+  border: none;
+  width: 100%;
+  height: 138px;
+}
+
+.lastMonthBtn{
+  background: #d9d9d9;
+}
+
+.thisMonthBtn:hover{
+cursor: pointer;
+  background: #ececec;
+}
+
+.HDays{
+  margin: 0;
+  font-size: 22px !important;
+}
+
+.headPlace{
+  grid-column: 1 / span 7;
+  background: white;
+}

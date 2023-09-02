@@ -11,13 +11,19 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ErrorComponent } from './error/error.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { LoadingComponent } from './loading/loading.component';
+import { LoginComponent } from './login/login.component';
+import { CalendarMainComponent } from './calendar-main/calendar-main.component';
+import { DayComponent } from './day/day.component';
+import { TableHeadComponent } from './table-head/table-head.component';
 
 
 const appRoutes: Routes =[
   {path: '', component: HomepageComponent},
   {path: 'registration', component: RegistrationComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'day/:day:month:year', component: DayComponent},
   {path: '**', component: ErrorComponent},
-
 ]
 
 @NgModule({
@@ -26,7 +32,12 @@ const appRoutes: Routes =[
     HomepageComponent,
     MenuComponent,
     RegistrationComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoadingComponent,
+    LoginComponent,
+    CalendarMainComponent,
+    DayComponent,
+    TableHeadComponent
   ],
   imports: [
     BrowserModule,
