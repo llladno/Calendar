@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { CalendarMainComponent } from './calendar-main/calendar-main.component';
 import { DayComponent } from './day/day.component';
 import { TableHeadComponent } from './table-head/table-head.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PopUpComponent } from './pop-up/pop-up.component'
 
 
 const appRoutes: Routes =[
@@ -37,7 +39,8 @@ const appRoutes: Routes =[
     LoginComponent,
     CalendarMainComponent,
     DayComponent,
-    TableHeadComponent
+    TableHeadComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ const appRoutes: Routes =[
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

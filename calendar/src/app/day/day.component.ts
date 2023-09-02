@@ -1,6 +1,8 @@
 import {Component, OnInit, Output} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {PopUpComponent} from "../pop-up/pop-up.component";
 
 @Component({
   selector: 'app-day',
@@ -16,8 +18,8 @@ minutes: any = []
   private routeSubscription: Subscription;
   private querySubscription: Subscription;
 
-
-  constructor(private route: ActivatedRoute){}
+  constructor(private route: ActivatedRoute,
+  private dialogRef:MatDialog){}
 
 
   ngOnInit() {
@@ -31,9 +33,15 @@ minutes: any = []
     this.minutes.length = 6
   }
 
-  clickPlace (event:any){
+  openDialog (){
     console.log('ok')
-    console.log(event.target)
+    const dialogConfig = new MatDialogConfig;
+    dialogConfig.position = {
+      'top': '0',
+      left: '0'
+    };
+
+    this.dialogRef.open(PopUpComponent, dialogConfig);
   }
 
 }

@@ -10,5 +10,11 @@
     "start-part2": "cd back && nodemon indexBack.js",
     "front": "yarn start-part1",
     "back": "yarn start-part2"
+  },
+  "dependencies": {
+    "18": "^0.0.0",
+    "node": "^20.5.1",
+    "nvm": "^0.0.4",
+    "yarn": "^1.22.19"
   }
 }

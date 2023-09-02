@@ -13,7 +13,7 @@
       </div>
       <div *ngFor="let t of times; let i = index" class="userPlace">
         <h1 class="times">{{i.toString().length === 1 ? "0"+i : i}}</h1>
-        <div *ngFor="let m of minutes; let c = index" class="minutes time:{{i}} {{c+'0'}}" (click)="clickPlace($event)">
+        <div *ngFor="let m of minutes; let c = index" class="minutes time:{{i}} {{c+'0'}}" (click)="openDialog()">
           {{""}}
         </div>
       </div>
