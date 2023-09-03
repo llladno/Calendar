@@ -32,4 +32,8 @@ h1{
 .times {
 }
 
+.mat-mdc-dialog-container{
+  position: relative !important;
+  z-index: 10;
+}
 

@@ -33,15 +33,22 @@ minutes: any = []
     this.minutes.length = 6
   }
 
-  openDialog (){
-    console.log('ok')
+  openDialog (event:any){
+    let x = event.pageX+"px"
+    console.log(event)
     const dialogConfig = new MatDialogConfig;
     dialogConfig.position = {
-      'top': '0',
-      left: '0'
+      'top': '30px',
+      left: '40px'
     };
 
-    this.dialogRef.open(PopUpComponent, dialogConfig);
+    this.dialogRef.open(PopUpComponent,
+      {
+      data: 'data',
+      height: '350px',
+      width: '250px',
+      position: {left:x, top: event.y+'px'}
+    });
   }
 
 }

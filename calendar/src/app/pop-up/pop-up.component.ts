@@ -7,7 +7,9 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./pop-up.component.css']
 })
 export class PopUpComponent {
-
-openDialog(){
-}
+  constructor(private dialogRef:MatDialog) {
+  }
+  close(){
+    this.dialogRef.closeAll()
+  }
 }
