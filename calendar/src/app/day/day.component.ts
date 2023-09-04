@@ -34,8 +34,26 @@ minutes: any = []
   }
 
   openDialog (event:any){
+    let times = event.target.classList
+    let time = []
+    console.log(times)
+    for (let b = 0; b < 3; b++){
+      console.log(Array.from(times))
+      if(Array.from(times).includes("time")){
+        time.push(times[b].replace(/[^0-9]/g, ''))
+      }
+      else if(!Array.from(times).includes('minutes')){
+        console.log(times[b])
+        time.push(times[b])
+      }
+    }
+    console.log(time)
+    // let dataDialog = {
+    //   time: time,
+    //   minutes: minutes,
+    // }
     let x = event.pageX+"px"
-    console.log(event)
+    console.log(event.target)
     const dialogConfig = new MatDialogConfig;
     dialogConfig.position = {
       'top': '30px',
