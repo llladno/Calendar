@@ -14,6 +14,7 @@ export class DayComponent implements OnInit{
   id: any;
 times: any = [];
 minutes: any = []
+  time:any = [];
 
   private routeSubscription: Subscription;
   private querySubscription: Subscription;
@@ -35,23 +36,23 @@ minutes: any = []
 
   openDialog (event:any){
     let times = event.target.classList
-    let time = []
+
     console.log(times)
     for (let b = 0; b < 3; b++){
-      console.log(Array.from(times))
-      if(Array.from(times).includes("time")){
-        time.push(times[b].replace(/[^0-9]/g, ''))
+      if(times[b].includes("time")){
+        let temp:any = times[b].replace(/[^0-9]/g, '')
+        this.time.push(temp)
       }
-      else if(!Array.from(times).includes('minutes')){
-        console.log(times[b])
-        time.push(times[b])
+      else if(!times[b].includes('minutes')){
+        this.time.push(times[b])
       }
+      console.log(this.time)
     }
-    console.log(time)
-    // let dataDialog = {
-    //   time: time,
-    //   minutes: minutes,
-    // }
+    console.log(this.time)
+    let dataDialog = {
+      time: this.time[1],
+      minutes: this.time[0],
+    }
     let x = event.pageX+"px"
     console.log(event.target)
     const dialogConfig = new MatDialogConfig;
@@ -62,7 +63,7 @@ minutes: any = []
 
     this.dialogRef.open(PopUpComponent,
       {
-      data: 'data',
+      data: dataDialog,
       height: '350px',
       width: '250px',
       position: {left:x, top: event.y+'px'}

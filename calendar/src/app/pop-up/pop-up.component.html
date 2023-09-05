@@ -1,6 +1,28 @@
 <h1>Hellp</h1>
 <div>
-  <p>time</p>
-  <input>
+  <form [formGroup]="groupControl" (submit)="submitForm()">
+    <div>
+      <h1>Время c:</h1>
+      <p>{{data.time}}:{{data.minutes}}</p>
+    </div>
+    <div>
+      <h1>по</h1>
+      <input type="time" formControlName="timeControl" class="timeMinutes" [min]="data.time+':'+data.minutes" required>
+    </div>
+    <button type="submit">Отправить</button>
+  </form>
 </div>
+
+
+<!--<form [formGroup]="groupControl" (submit)="submitForm()">-->
+<!--  <h1>Почта</h1>-->
+<!--  <input name="email" formControlName="emailControl">-->
+<!--  <h1>Пароль</h1>-->
+<!--  <input name="password" formControlName="passwordControl">-->
+<!--  <button type="submit">Submit</button>-->
+<!--  <button routerLink="/registration">Регистрация</button>-->
+<!--</form>-->
+
+
+
 <button (click)="close()">close</button>
