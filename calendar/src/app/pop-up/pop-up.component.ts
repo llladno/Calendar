@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Inject } from '@angular/core';
+import {Inject} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -11,35 +11,52 @@ import {FormControl, FormGroup} from "@angular/forms";
   templateUrl: './pop-up.component.html',
   styleUrls: ['./pop-up.component.css']
 })
-export class PopUpComponent  implements  OnInit{
+export class PopUpComponent implements OnInit {
 
   groupControl: FormGroup;
+  email: any;
+  user: any
 
-  constructor(private dialogRef:MatDialog,
-  @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(private dialogRef: MatDialog,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private http: HttpClient) {
   }
+
   ngOnInit() {
     this.groupControl = new FormGroup({
       timeControl: new FormControl(),
-      // passwordControl: new FormControl(),
+      taskControl: new FormControl(),
     })
-    if (this.data.time.length === 1){
-      this.data.time = "0"+this.data.time
+    if (this.data.time.length === 1) {
+      this.data.time = "0" + this.data.time
     }
   }
 
-  submitForm(){
-    let input = document.getElementsByClassName('timeMinutes')[0]
-    if (input.attributes)
-    // if (input.validity.valid && input.type === "time") {
-    //   // <input type=time> reversed range supported
-    // } else {
-    //   // <input type=time> reversed range unsupported
-    // }
+  submitForm() {
+    if ((this.groupControl.value.timeControl > this.data.time + ":" + this.data.minutes) &&
+      (this.groupControl.value.taskControl !== '' || 0)) {
+      this.email = localStorage.getItem('email')
+
+      this.http.post('http://localhost:3002/newTask', {
+        email: this.email,
+        timeOn: this.data.time + ":" + this.data.minutes,
+        timeTo: this.groupControl.value.timeControl,
+        task: this.groupControl.value.taskControl,
+        dayData: this.data.dayData
+      }).subscribe(res => {
+        // let temp: any = res
+        // temp = temp.userData.user
+        // this.user = temp
+        // localStorage.setItem('user', temp.email)
+      }, err => console.log('ERROR'))
+    } else {
+      alert('Введите корректные данные')
+    }
+
     console.log(this.groupControl.value)
   }
 
-  close(){
+  close() {
     this.dialogRef.closeAll()
   }
 }
