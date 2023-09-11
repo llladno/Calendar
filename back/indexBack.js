@@ -5,7 +5,14 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const {MongoClient} = require('mongodb');
 let dayHandler = require("./additional/dayHandler")
-const urlDB = 'mongodb://localhost:27017'
+const {cl} = require("yarn/lib/cli");
+// Local Server : 'mongodb://localhost:27017'
+const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
+
+//Reomote server: 'mongodb://26.226.199.170:27017'
+// const urlDB = 'mongodb://26.226.199.170:27017'
+
+
 let client
 
 app.use(cors())
@@ -13,11 +20,12 @@ app.use(bodyParser())
 
 
 async function connect() {
+
     client = await MongoClient.connect(
-        'mongodb://localhost:27017/',
+        urlDB,
         {useNewUrlParser: true, useUnifiedTopology: true}
     ).catch(err => console.log('error'));
-    collection = client.db('Calendar').collection('Calendar')
+        collection = client.db('Calendar').collection('Calendar')
 }
 
 connect().then(console.log('ok')).catch(err => {

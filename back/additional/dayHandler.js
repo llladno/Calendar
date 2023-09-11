@@ -8,12 +8,25 @@ module.exports = function (userData, dataString, body){
         console.log(Object.keys(x))
     })
     sendedData.forEach((x)=>{
-        console.log(x)
-        // console.log(x[dataString])
-        x.devValue = {
-            timeOnDev: x.timeOn,
-            timeTodev: x.timeTo
+        let changeValueOn
+        let changeValueTo
+        x.timeOn.slice(0,1) === '0'  ? changeValueOn = x.timeOn.slice(1,2)
+            : changeValueOn = x.timeOn
 
+        x.timeTo.slice(0,1) === '0'  ? changeValueTo = x.timeTo.slice(1,2)
+            : changeValueTo = x.timeOn
+
+        x.devValue = {
+            timeOnDev: {
+                hour: changeValueOn,
+                minutes: x.timeOn.slice(3,5),
+                allTimeL: x.timeOn
+            },
+            timeToDev: {
+                hour: changeValueTo,
+                minutes: x.timeTo.slice(3,5),
+                allTimeL:x.timeTo
+            }
         }
     })
     return sendedData
