@@ -17,6 +17,8 @@ export class PopUpComponent implements OnInit {
   email: any;
   user: any
 
+  defaultColor: string = '#0000FF'
+
   constructor(private dialogRef: MatDialog,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private http: HttpClient) {
@@ -26,6 +28,7 @@ export class PopUpComponent implements OnInit {
     this.groupControl = new FormGroup({
       timeControl: new FormControl(),
       taskControl: new FormControl(),
+      colorControl: new FormControl()
     })
     if (this.data.time.length === 1) {
       this.data.time = "0" + this.data.time
@@ -33,6 +36,8 @@ export class PopUpComponent implements OnInit {
   }
 
   submitForm() {
+    this.groupControl.value.colorControl === null ? this.groupControl.value.colorControl = '#000000'
+      : null
     if ((this.groupControl.value.timeControl > this.data.time + ":" + this.data.minutes) &&
       (this.groupControl.value.taskControl !== '' || 0)) {
       this.email = localStorage.getItem('email')
@@ -42,6 +47,7 @@ export class PopUpComponent implements OnInit {
         timeOn: this.data.time + ":" + this.data.minutes,
         timeTo: this.groupControl.value.timeControl,
         task: this.groupControl.value.taskControl,
+        color: this.groupControl.value.colorControl,
         dayData: this.data.dayData
       }).subscribe(res => {
         // let temp: any = res
@@ -52,11 +58,12 @@ export class PopUpComponent implements OnInit {
     } else {
       alert('Введите корректные данные')
     }
-
     console.log(this.groupControl.value)
   }
 
   close() {
+    let appRootClass: any = document.getElementsByClassName('appRootClass')[0]
+    appRootClass.style.removeProperty('filter')
     this.dialogRef.closeAll()
   }
 }

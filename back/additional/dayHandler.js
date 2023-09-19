@@ -11,10 +11,10 @@ module.exports = function (userData, dataString, body){
         let changeValueOn
         let changeValueTo
         x.timeOn.slice(0,1) === '0'  ? changeValueOn = x.timeOn.slice(1,2)
-            : changeValueOn = x.timeOn
+            : changeValueOn = x.timeOn.slice(0,2)
 
         x.timeTo.slice(0,1) === '0'  ? changeValueTo = x.timeTo.slice(1,2)
-            : changeValueTo = x.timeOn
+            : changeValueTo = x.timeTo.slice(0,2)
 
         x.devValue = {
             timeOnDev: {

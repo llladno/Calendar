@@ -51,9 +51,8 @@ export class DayComponent implements OnInit {
       // localStorage.setItem('user', temp.email)
     }), err => console.log('ERROR'))
   }
-  dialogShow(event: any) {
-    console.log(sessionStorage.getItem('email'))
 
+  dialogShow(event: any) {
     let times = event.target.classList
     for (let b = 0; b < 3; b++) {
       if (times[b].includes("time")) {
@@ -75,13 +74,16 @@ export class DayComponent implements OnInit {
     this.dialogRef.open(PopUpComponent,
       {
         data: dataDialog,
-        height: '350px',
-        width: '250px',
-        position: {left: x, top: event.y + 'px'}
+        height: '400px',
+        width: '500px',
+        backdropClass: 'backdropBackground'
       });
   }
 
   openDialog(event: any) {
+    let appRootClass: any = document.getElementsByClassName('appRootClass')[0]
+
+    appRootClass.style.filter = 'brightness(0.4)'
     if (this.time.length > 1) {
       this.dialogRef.closeAll()
       this.time = []
@@ -92,55 +94,47 @@ export class DayComponent implements OnInit {
     }
   }
 
-  async setValueToCell(){
+  async setValueToCell() {
     await this.getDayInfo()
-    !this.dayData ? setTimeout(()=>{
+    !this.dayData ? setTimeout(() => {
         this.setValueToCell()
-    },1000)
+      }, 100)
       : null
-    for (let c in this.dayData.userData){
-      console.log(this.dayData.userData[c])
+    for (let c in this.dayData.userData) {
       let userData = this.dayData.userData[c]
-      let element:any = document.getElementsByClassName(`${userData.devValue.timeOnDev.minutes}`)
-      Array.from(element).forEach((x:any)=>{
-        if(x.classList[2] === (`time:${userData.devValue.timeOnDev.hour}`)){
-          console.log(`time:${userData.devValue.timeOnDev.hour}`)
-          x.style.background = '#000000'
-        }
-      })
-      let element2:any = document.getElementsByClassName(`${userData.devValue.timeToDev.minutes}`)
-      console.log("ELEMENT")
-      console.log(element2)
-      Array.from(element2).forEach((y:any)=>{
-        if(y.classList[2] === (`time:${userData.devValue.timeToDev.hour}`)){
-          console.log(`time:${userData.devValue.timeToDev.hour}`)
-          y.style.background = '#363636'
-        }
-      })
 
-      let dif = (userData.devValue.timeToDev.hour * 60 + +userData.devValue.timeToDev.minutes) -
-        (userData.devValue.timeOnDev.hour * 60 + +userData.devValue.timeOnDev.minutes)
-  for (let n = 0; n< dif/10;n++){
-    let element4:any = document.getElementsByClassName(`${userData.devValue.timeToDev.minutes+n*10}`)
-    Array.from(element4).forEach((y:any)=>{
-      if(y.classList[2] === (`time:${userData.devValue.timeOnDev.hour}`)){
-        console.log(`time:${userData.devValue.timeToDev.hour}`)
-        y.style.background = '#9d5353'
+      let dif = (+userData.devValue.timeToDev.hour * 60 + +userData.devValue.timeToDev.minutes) -
+        (+userData.devValue.timeOnDev.hour * 60 + +userData.devValue.timeOnDev.minutes) + 10
+      for (let n = 0; n < (dif / 10); n++) {
+        let c:any = n
+        if (+userData.devValue.timeOnDev.minutes + n * 10 > 59) {
+          let check = dif - 60
+          c = +userData.devValue.timeOnDev.minutes + dif-n*10 - check
+          // c = +userData.devValue.timeOnDev.minutes + c
+
+          if (c <= 0 || c === '00'){
+            c = '00'
+          }
+
+          let element4: any = document.getElementsByClassName(`${c}`)
+          Array.from(element4).forEach((y: any) => {
+            if (y.classList[2] === (`time:${+userData.devValue.timeOnDev.hour+1}`)) {
+              y.style.background = userData.color || '#0000ff'
+            }
+          })
+        }
+        else {
+          let element4: any = document.getElementsByClassName(`${+userData.devValue.timeOnDev.minutes + n * 10}`)
+          console.log(+userData.devValue.timeOnDev.minutes + n * 10)
+          Array.from(element4).forEach((y: any) => {
+            if (y.classList[2] === (`time:${userData.devValue.timeOnDev.hour}`)) {
+              y.style.background = userData.color || '#0000ff'
+            }
+          })
+        }
       }
-    })
-  }
-
-      // let element3:any = document.getElementsByClassName(`${userData.devValue.timeToDev.minutes}`)
-      // Array.from(element3).forEach((y:any)=>{
-      //   if(y.classList[2] === (`time:${userData.devValue.timeToDev.hour}`)){
-      //     console.log(`time:${userData.devValue.timeToDev.hour}`)
-      //     y.style.background = '#363636'
-      //   }
-      // })
-
     }
     // document.getElementsByClassName(`${this.dayData.userData.}`)
     console.log(await this.dayData)
   }
-
 }

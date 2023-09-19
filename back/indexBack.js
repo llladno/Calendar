@@ -74,24 +74,21 @@ app.post('/login', async (req, res) => {
 
 app.post('/newTask', async (req, res) => {
     await connect()
-    console.log(req.body)
     let body = req.body
-    // let filter = {"user.email": req.body.emailControl, "user.password": req.body.passwordControl}
     let filter = {"user.email": req.body.email}
     let dataString = `${body.dayData.day},${body.dayData.month},${body.dayData.year}`
     let array = []
     array.push( {[dataString]:             {
-            timeOn: req.body.timeOn,
-            timeTo: req.body.timeTo,
-            task: req.body.task,
-            dayData: req.body.dayData
+            timeOn: body.timeOn,
+            timeTo: body.timeTo,
+            task: body.task,
+            dayData: body.dayData,
+            color: body.color
         }})
     let array2 = []
     let dataString2 = `user.data.${Object.keys(array[0])}`
 
     array2.push({[dataString2]: array[0]})
-    console.log(Object.keys(array[0]))
-    console.log(array)
     let array3 = array2[0]
 
 
@@ -136,7 +133,6 @@ app.post('/getDayInfo', async (req, res) => {
     // })
     let data = dayHandler(UserData, dataString)
     await dayHandler(UserData, dataString, body)
-    console.log(data)
     result ? res.status(200).send({status: 'valid', userData: data})
         : res.status(200).send({status: 'unvalid'});
     client.close()
