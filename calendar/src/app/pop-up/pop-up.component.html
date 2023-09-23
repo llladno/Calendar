@@ -1,19 +1,22 @@
-<div>
-  <form [formGroup]="groupControl" (submit)="submitForm()">
-    <div>
-      <h1>Время c:</h1>
-      <p>{{data.time}}:{{data.minutes}}</p>
-    </div>
-    <div>
-      <h1>по</h1>
-      <input type="time" formControlName="timeControl" class="timeMinutes" [min]="data.time+':'+data.minutes" required>
-    </div>
-    <p>Задача</p>
-    <input formControlName="taskControl">
-    <p>Цвет</p>
-    <input type="color" class="colorInput" formControlName="colorControl" value="#0000FF">
-    <button type="submit">Отправить</button>
-  </form>
-</div>
+<div class="dialogRefDisplay">
+  <div>
+    <form [formGroup]="groupControl" (submit)="submitForm()">
+      <div>
+        <h1>Время c: <span class="noBold">{{data.time}}:{{data.minutes}}</span></h1>
+      </div>
+      <div>
+        <h1>по</h1>
+        <input type="time" formControlName="timeControl" class="timeMinutes" [min]="data.time+':'+data.minutes" required>
+      </div>
+      <p>Задача</p>
+      <input formControlName="taskControl">
+      <p>Цвет</p>
+      <input type="color" class="colorInput" formControlName="colorControl" value="#0000FF">
+      <div>
+        <button type="submit">Отправить</button>
+        <button type="button" (click)="close()">close</button>
+      </div>
+    </form>
+  </div>
 
-<button (click)="close()">close</button>
+</div>

@@ -9,6 +9,12 @@ body {
 *{
   font-family: 'Inter', sans-serif;
 }
+
+p{
+  padding: 0;
+  margin: 0;
+}
+
 .displayHomepage{
   background: white;
   display: grid;
@@ -33,3 +39,7 @@ app-root{
   transition: all 0.2s ease-in;
 }
 
+
+.noBold{
+  font-weight: normal
+}

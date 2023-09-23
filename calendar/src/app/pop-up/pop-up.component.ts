@@ -58,7 +58,6 @@ export class PopUpComponent implements OnInit {
     } else {
       alert('Введите корректные данные')
     }
-    console.log(this.groupControl.value)
   }
 
   close() {
