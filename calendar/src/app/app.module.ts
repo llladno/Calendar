@@ -17,7 +17,8 @@ import { CalendarMainComponent } from './calendar-main/calendar-main.component';
 import { DayComponent } from './day/day.component';
 import { TableHeadComponent } from './table-head/table-head.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { PopUpComponent } from './pop-up/pop-up.component'
+import { PopUpComponent } from './pop-up/pop-up.component';
+
 
 
 const appRoutes: Routes =[
@@ -40,7 +41,7 @@ const appRoutes: Routes =[
     CalendarMainComponent,
     DayComponent,
     TableHeadComponent,
-    PopUpComponent
+    PopUpComponent,
   ],
   imports: [
     BrowserModule,

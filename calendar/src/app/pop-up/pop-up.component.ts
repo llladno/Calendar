@@ -55,6 +55,7 @@ export class PopUpComponent implements OnInit {
         // this.user = temp
         // localStorage.setItem('user', temp.email)
       }, err => console.log('ERROR'))
+      close()
     } else {
       alert('Введите корректные данные')
     }

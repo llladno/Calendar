@@ -1,5 +1,5 @@
 <div class="dialogRefDisplay">
-  <div>
+  <div *ngIf="data.new ; else watch">
     <form [formGroup]="groupControl" (submit)="submitForm()">
       <div>
         <h1>Время c: <span class="noBold">{{data.time}}:{{data.minutes}}</span></h1>
@@ -18,5 +18,17 @@
       </div>
     </form>
   </div>
+  <ng-template #watch>
+      <div>
+        <h1>Время c: <span class="noBold">{{data.timeOn}}</span></h1>
+      </div>
+      <div>
+        <h1>по: <span class="noBold">{{data.timeTo}}</span></h1>
+      </div>
+      <p>Задача:</p> <p>{{data.task}}</p>
+      <div>
+        <button type="button" (click)="close()">close</button>
+      </div>
+  </ng-template>
 
 </div>

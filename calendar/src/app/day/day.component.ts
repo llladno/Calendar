@@ -18,7 +18,6 @@ export class DayComponent implements OnInit {
   time: any = [];
   dayData: any
 
-
   constructor(private route: ActivatedRoute,
               private dialogRef: MatDialog,
               private http: HttpClient) {
@@ -52,22 +51,29 @@ export class DayComponent implements OnInit {
     }), err => console.log('ERROR'))
   }
 
-  dialogShow(event: any) {
+  dialogShow(event: any, newValue:boolean, dataTask:any) {
+    console.log(dataTask)
     let times = event.target.classList
-    for (let b = 0; b < 3; b++) {
-      if (times[b].includes("time")) {
-        let temp: any = times[b].replace(/[^0-9]/g, '')
-        this.time.push(temp)
-      } else if (!times[b].includes('minutes')) {
-        this.time.push(times[b])
+      for (let b = 0; b < 3; b++) {
+        if (times[b].includes("time")) {
+          let temp: any = times[b].replace(/[^0-9]/g, '')
+          this.time.push(temp)
+        } else if (!times[b].includes('minutes')) {
+          this.time.push(times[b])
+        }
       }
-    }
+
+      console.log(event.target)
+      // this.dayData.userData[]
 
     let dataDialog = {
       time: this.time[1],
       minutes: this.time[0],
-      dayData: this.data
+      dayData: this.data,
+      new: newValue
     }
+      dataTask ? dataDialog = dataTask
+        : dataDialog = dataDialog
 
     let x = event.pageX + "px"
 
@@ -82,19 +88,22 @@ export class DayComponent implements OnInit {
 
   openDialog(event: any) {
     let appRootClass: any = document.getElementsByClassName('appRootClass')[0]
-    if (event.target.style.background) {
+    if (event.target.classList[3]?.slice(0,4) === 'task') {
+      let number = +event.target.classList[3].slice(5,100)
+      console.log(number)
+      console.log(this.dayData[event.target.classList[3].slice(5,1000)])
+      console.log(this.dayData)
+      this.dialogShow(event,false, this.dayData.userData[number])
 //показывать что то
     } else {
-      console.log('empty')
-      console.log('empty')
       appRootClass.style.filter = 'brightness(0.4)'
       if (this.time.length > 1) {
         this.dialogRef.closeAll()
         this.time = []
-        this.dialogShow(event)
+        this.dialogShow(event,true, null)
 
       } else {
-        this.dialogShow(event)
+        this.dialogShow(event, true, null)
       }
     }
   }
@@ -105,12 +114,10 @@ export class DayComponent implements OnInit {
         this.setValueToCell()
       }, 100)
       : null
-    for (let c in this.dayData.userData) {
-      let userData = this.dayData.userData[c]
-      console.log(userData)
+    for (let ar in this.dayData.userData) {
+      let userData = this.dayData.userData[ar]
       let dif = (+userData.devValue.timeToDev.hour * 60 + +userData.devValue.timeToDev.minutes) -
         (+userData.devValue.timeOnDev.hour * 60 + +userData.devValue.timeOnDev.minutes) + 10
-      console.log('dif', dif)
       let h = 1
 
       for (let n = 0; n < (dif / 10); n++) {
@@ -118,32 +125,27 @@ export class DayComponent implements OnInit {
         if (+userData.devValue.timeOnDev.minutes + n * 10 > 59) {
 
           let check = dif - 60
-          console.log('check', check)
-          console.log('minutes:', userData.devValue.timeOnDev.minutes)
-          console.log('dif and',  dif + n * 10)
           c = +userData.devValue.timeOnDev.minutes - dif + n * 10 + check
           if (c < 0) {
             c += 10
           }
 
-          console.log(c/h)
-          console.log("h",h)
-          console.log(c)
-
           if (c <= 0 || c === '00') {
             c = '00'
           }
 
-          console.log('dif/', (dif)/60)
 
           let element4: any = document.getElementsByClassName(`${c}`)
           Array.from(element4).forEach((y: any) => {
-            if(c > 60 && c/h > 60){
+            if(c > 60){// Доделать
               h = h+1
             }
-            console.log('it`s H', h)
+            console.log(c)
+            console.log(h)
             if (y.classList[2] === (`time:${+userData.devValue.timeOnDev.hour + h}`)) {
               y.style.background = userData.color || '#0000ff'
+              y.classList.add(`task:${ar}`)
+              // y.innerHTML = `<button (click)="showIndoDay()" class="buttonShowInfoDay"></button>`
             }
           })
         } else {
@@ -151,22 +153,8 @@ export class DayComponent implements OnInit {
           Array.from(element4).forEach((y: any) => {
             if (y.classList[2] === (`time:${userData.devValue.timeOnDev.hour}`)) {
               y.style.background = userData.color || '#0000ff'
-              // let n
-              // let number
-              // if (y.style.background !== 'rgb(255, 255, 255)') {
-              //   if (Array.from(y.classList)[3]) {
-              //     number = y.classList[3].slice(2,3)
-              //     console.log(number)
-              //     n = +number+1
-              //     console.log(n)
-              //     // y.classList[3] = `n:${n}`
-              //     y.classList.remove(`n:${n-1}`)
-              //     y.classList.toggle(`n:${n}`)
-              //   } else {
-              //     y.classList.add('n:1')
-              //   }
-              //   console.log(y.style.background)
-              // }
+              y.classList.add(`task:${ar}`)
+              // y.innerHTML = `<button (click)="showIndoDay()" class="buttonShowInfoDay"></button>`
             }
           })
         }
@@ -180,5 +168,8 @@ export class DayComponent implements OnInit {
         }
       })
     }
+  }
+  showIndoDay (){
+    console.log('info')
   }
 }
