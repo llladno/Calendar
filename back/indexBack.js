@@ -74,10 +74,18 @@ app.post('/login', async (req, res) => {
 
 app.post('/newTask', async (req, res) => {
     await connect()
+    console.log('newTask')
     let body = req.body
     let filter = {"user.email": req.body.email}
     let dataString = `${body.dayData.day},${body.dayData.month},${body.dayData.year}`
     let array = []
+    let data = {
+        timeOn: body.timeOn,
+        timeTo: body.timeTo,
+        task: body.task,
+        dayData: body.dayData,
+        color: body.color
+    }
     array.push( {[dataString]:             {
             timeOn: body.timeOn,
             timeTo: body.timeTo,
@@ -88,22 +96,27 @@ app.post('/newTask', async (req, res) => {
     let array2 = []
     let dataString2 = `user.data.${Object.keys(array[0])}`
 
-    array2.push({[dataString2]: array[0]})
-    let array3 = array2[0]
 
+
+    array2.push({[dataString2]: array[0]})
 
     collection.updateOne(filter, {
-        $push:{"user.data": array[0]}
+        $push:{"user.data": data}
     }).catch((err)=>console.log(err))
 
-    setTimeout(async () => {
-        const cursor = collection.find(filter)
-        const result = await cursor.toArray();
-        console.log(result)
-        result ? res.status(200).send({status: 'valid', userData: result[0]})
-            : res.status(200).send({status: 'unvalid'});
-        client.close()
-    }, 1000)
+    // collection.updateOne(filter, {$set:{'user.data':array[0]}},{upsert:true}
+    //     ).catch((err)=>console.log(err))
+
+
+
+    // setTimeout(async () => {
+    //     const cursor = collection.find(filter)
+    //     const result = await cursor.toArray();
+    //     console.log(result)
+    //     result ? res.status(200).send({status: 'valid', userData: result[0]})
+    //         : res.status(200).send({status: 'unvalid'});
+    //     client.close()
+    // }, 1000)
 })
 
 app.post('/getDayInfo', async (req, res) => {
@@ -143,3 +156,102 @@ app.listen(PORT, () => {
 })
 
 
+// async function  testRequest(){
+//     await connect()
+//     let body = {
+//         email: 'ok@',
+//         dayData: {
+//             day: '2',
+//             month: '9',
+//             year: '2023'
+//         }
+//     }
+//     let filter = {"user.email": body.email}
+//     let dataString = `${body.dayData.day},${body.dayData.month},${body.dayData.year}`
+//     let array = []
+//     let data = {
+//         timeOn: "00:10",
+//         timeTo: "01:20",
+//         task: "123",
+//         timeOn: body.timeOn,
+//         timeTo: body.timeTo,
+//         task: body.task,
+//         dayData: body.dayData,
+//         color: body.color
+//     }
+//     array.push( {[dataString]:             {
+//             timeOn: "00:10",
+//             timeTo: "01:20",
+//             task: "123",
+//             timeOn: body.timeOn,
+//             timeTo: body.timeTo,
+//             task: body.task,
+//             dayData: body.dayData,
+//             color: body.color
+//         }})
+//     let example = {
+//         "timeOn": "00:10",
+//         "timeTo": "01:20",
+//         "task": "123",
+//         "dayData": {
+//             "day": "3",
+//             "month": "9",
+//             "year": "2023"
+//         }}
+//     let checkKey = [`user.data.${dataString}`]
+//     let checkValue = [example]
+//
+//     let dataObj = {}
+//
+//     for (let i = 0; i < checkKey.length; i++) {
+//         dataObj[checkKey[i]] = checkValue[i];
+//     }
+//     console.log(dataObj)
+//
+//     array2.push({[dataString2]: array[0]})
+//     let array3 = array2[0]
+//     // console.log(array[0])
+//     // console.log(array2[0])
+//     // console.log(array3[0])
+//     //
+//     // collection.updateOne(filter, {
+//     //     $push:{dataString2: array[0]}
+//     // }).catch((err)=>console.log(err))
+//
+//     collection.updateOne(filter, {$push:{'user.date':array[0]}},{upsert:true}
+//     ).catch((err)=>console.log(err))
+//     client.close()
+// }
+//
+// setTimeout(()=>{
+//     testRequest()
+//     console.log('testRequest OK')
+// },2000)
+
+
+
+
+
+// db.Calendar.updateOne({"user.email": "ok@"},{$set:{"user.data":"3,9,2023": {
+//     "timeOn": "12:20",
+//         "timeTo": "13:40",
+//         "task": "123",
+//         "dayData": {
+//         "day": "1",
+//             "month": "9",
+//             "year": "2023"
+//     },
+//     "color": "#000000"
+// }}},{upsert:true})
+//
+//
+//
+//
+// "timeOn": "00:10",
+//     "timeTo": "01:20",
+//     "task": "123",
+//     "dayData": {
+//     "day": "3",
+//         "month": "9",
+//         "year": "2023"
+// }

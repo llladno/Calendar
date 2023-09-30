@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, NgZone, OnInit, Output} from '@angular/core';
 import {DatePipe} from "@angular/common";
 
 @Component({
@@ -7,8 +7,10 @@ import {DatePipe} from "@angular/common";
   styleUrls: ['./calendar-main.component.css']
 })
 export class CalendarMainComponent implements OnInit{
+  @Input() parentValueChange:any;
   current: any;
   date: any;
+  loading:boolean = true;
   data: any
   mass: any = []
   days: string[] = [
@@ -20,18 +22,25 @@ export class CalendarMainComponent implements OnInit{
     "Суббота",
     "Воскресенье",
   ]
+
+  constructor(private zone: NgZone) {}
+
   ngOnInit() {
     this.current = new Date();
     function getDaysInMonth(year:number, month:number) {
       return new Date(year, month, 0).getDate();
     }
 
+    console.log(this.parentValueChange)
+    this.loading = false
+
     this.data = {
       month: this.current.getMonth() + 1,
       year: this.current.getFullYear(),
       date: getDaysInMonth(this.current.getFullYear(), this.current.getMonth() + 1),
       firstDay: new Date(this.current.getFullYear(),
-        this.current.getMonth(), 1).getDay()
+        this.current.getMonth(), 1).getDay(),
+      allDate: this.current
     }
     let backMonth = getDaysInMonth(this.current.getFullYear(), this.current.getMonth())
     for(let b = 0; b < this.data.date; b++){
@@ -41,12 +50,21 @@ export class CalendarMainComponent implements OnInit{
 
       this.mass.unshift({lastMonth: backMonth-c})
     }
-  }
-  divArray(n: number): number[] {
-    return Array.from({ length: n }, (_, i) => i);
+    console.log(this.data)
   }
 
   selectDay(event: any){
     console.log(event.target.textContent)
+  }
+
+  handleValueChange(event:any){
+    this.zone.run(()=>{
+      this.data = event
+    });
+    this.loading = true
+    console.log(event)
+    console.log('parentValue')
+    console.log(this.parentValueChange)
+    this.loading = false
   }
 }

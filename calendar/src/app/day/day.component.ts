@@ -1,6 +1,5 @@
 import {Component, OnInit, Output, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Subscription} from 'rxjs';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PopUpComponent} from "../pop-up/pop-up.component";
 import {HttpClient} from "@angular/common/http";
@@ -98,7 +97,7 @@ export class DayComponent implements OnInit {
     } else {
       appRootClass.style.filter = 'brightness(0.4)'
       if (this.time.length > 1) {
-        this.dialogRef.closeAll()
+        // this.dialogRef.closeAll()
         this.time = []
         this.dialogShow(event,true, null)
 
@@ -112,8 +111,9 @@ export class DayComponent implements OnInit {
     await this.getDayInfo()
     !this.dayData ? setTimeout(() => {
         this.setValueToCell()
-      }, 100)
+      }, 1000)
       : null
+    if (this.dayData){
     for (let ar in this.dayData.userData) {
       let userData = this.dayData.userData[ar]
       let dif = (+userData.devValue.timeToDev.hour * 60 + +userData.devValue.timeToDev.minutes) -
@@ -137,8 +137,8 @@ export class DayComponent implements OnInit {
 
           let element4: any = document.getElementsByClassName(`${c}`)
           Array.from(element4).forEach((y: any) => {
-            if(c > 60){// Доделать
-              h = h+1
+            if (c > 60) {// Доделать
+              h = h + 1
             }
             console.log(c)
             console.log(h)
@@ -167,6 +167,7 @@ export class DayComponent implements OnInit {
           console.log(firstElement[i])
         }
       })
+    }
     }
   }
   showIndoDay (){
