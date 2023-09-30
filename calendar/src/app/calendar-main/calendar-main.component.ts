@@ -1,5 +1,5 @@
 import {Component, Input, NgZone, OnInit, Output} from '@angular/core';
-import {DatePipe} from "@angular/common";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-calendar-main',
@@ -23,13 +23,19 @@ export class CalendarMainComponent implements OnInit{
     "Воскресенье",
   ]
 
-  constructor(private zone: NgZone) {}
+  constructor(private zone: NgZone,
+              private route: ActivatedRoute,) {}
 
   ngOnInit() {
+    this.data = 0
     this.current = new Date();
     function getDaysInMonth(year:number, month:number) {
       return new Date(year, month, 0).getDate();
     }
+
+    console.log(this.route.queryParams)
+    console.log(this.route.snapshot.queryParams)
+
 
     console.log(this.parentValueChange)
     this.loading = false
@@ -58,13 +64,17 @@ export class CalendarMainComponent implements OnInit{
   }
 
   handleValueChange(event:any){
-    this.zone.run(()=>{
-      this.data = event
-    });
+    this.ngOnInit()
     this.loading = true
+
     console.log(event)
     console.log('parentValue')
     console.log(this.parentValueChange)
     this.loading = false
+    this.data = event
+  }
+
+  getLoading(){
+    return true
   }
 }

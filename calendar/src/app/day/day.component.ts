@@ -164,7 +164,6 @@ export class DayComponent implements OnInit {
         if (x.classList[0] === userData.devValue.timeOnDev.minutes) {
           firstElement[i].innerHTML = `<p>${userData.timeOn} - ${userData.timeTo}</p>
 <button>Редактировать</button>`
-          console.log(firstElement[i])
         }
       })
     }

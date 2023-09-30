@@ -23,6 +23,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
 
 const appRoutes: Routes =[
   {path: '', component: HomepageComponent},
+  {path: 'calendar', component: HomepageComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
   {path: 'day/:day:month:year', component: DayComponent},

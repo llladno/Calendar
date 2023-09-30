@@ -5,5 +5,7 @@
 </p>
 <div>
   <button>Назад</button>
-  <button (click)="nextMonth()">Вперёд</button>
+  <button (click)="nextMonth()"><a [routerLink]="['/calendar']"
+                                   [queryParams]="{'month': data.month+1, 'year':data.year}">
+    Вперёд</a></button>
 </div>

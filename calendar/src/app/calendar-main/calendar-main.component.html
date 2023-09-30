@@ -4,7 +4,8 @@
     <div *ngFor="let c of days" class="days">
       <h1 class="HDays">{{c}}</h1>
     </div>
-    <div *ngFor="let b of mass">
+    <div *ngFor="let b of mass" >
+      <div *ngIf="!loading">
       <div *ngIf="b.lastMonth" class="lastMonth">
         <button class="lastMonthBtn">
           {{b.lastMonth}}
@@ -18,6 +19,7 @@
           </button>
         </a>
       </div>
+    </div>
     </div>
   </div>
 </ng-container>

@@ -7,7 +7,8 @@ const {MongoClient} = require('mongodb');
 let dayHandler = require("./additional/dayHandler")
 const {cl} = require("yarn/lib/cli");
 // Local Server : 'mongodb://localhost:27017'
-const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
+const urlDB = 'mongodb://127.0.0.1:27017/'
+// const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
 
 //Reomote server: 'mongodb://26.226.199.170:27017'
 // const urlDB = 'mongodb://26.226.199.170:27017'
@@ -20,25 +21,24 @@ app.use(bodyParser())
 
 
 async function connect() {
-
     client = await MongoClient.connect(
         urlDB,
         {useNewUrlParser: true, useUnifiedTopology: true}
-    ).catch(err => console.log('error'));
+    ).catch(err => console.log('error', err));
         collection = client.db('Calendar').collection('Calendar')
 }
 
 connect().then(console.log('ok')).catch(err => {
-    err ? console.log('ERROR')
+    err ? console.log('ERROR', err)
         : console.log('ok')
 });
 
 app.get('/', async (req, res) => {
 })
 
-app.get('/registration', async (req, res) => {
-    res.send('ok')
-})
+// app.get('/registration', async (req, res) => {
+//     res.send('ok')
+// })
 
 app.post('/registration', async (req, res) => {
     await connect()
