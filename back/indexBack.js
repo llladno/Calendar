@@ -7,8 +7,8 @@ const {MongoClient} = require('mongodb');
 let dayHandler = require("./additional/dayHandler")
 const {cl} = require("yarn/lib/cli");
 // Local Server : 'mongodb://localhost:27017'
-const urlDB = 'mongodb://127.0.0.1:27017/'
-// const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
+// const urlDB = 'mongodb://127.0.0.1:27017/'
+const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
 
 //Reomote server: 'mongodb://26.226.199.170:27017'
 // const urlDB = 'mongodb://26.226.199.170:27017'
@@ -86,37 +86,11 @@ app.post('/newTask', async (req, res) => {
         dayData: body.dayData,
         color: body.color
     }
-    array.push( {[dataString]:             {
-            timeOn: body.timeOn,
-            timeTo: body.timeTo,
-            task: body.task,
-            dayData: body.dayData,
-            color: body.color
-        }})
-    let array2 = []
-    let dataString2 = `user.data.${Object.keys(array[0])}`
-
-
-
-    array2.push({[dataString2]: array[0]})
+    array.push( {[dataString]: data})
 
     collection.updateOne(filter, {
-        $push:{"user.data": data}
+        $push:{"user.data": array[0]}
     }).catch((err)=>console.log(err))
-
-    // collection.updateOne(filter, {$set:{'user.data':array[0]}},{upsert:true}
-    //     ).catch((err)=>console.log(err))
-
-
-
-    // setTimeout(async () => {
-    //     const cursor = collection.find(filter)
-    //     const result = await cursor.toArray();
-    //     console.log(result)
-    //     result ? res.status(200).send({status: 'valid', userData: result[0]})
-    //         : res.status(200).send({status: 'unvalid'});
-    //     client.close()
-    // }, 1000)
 })
 
 app.post('/getDayInfo', async (req, res) => {

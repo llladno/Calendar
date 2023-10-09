@@ -12,7 +12,7 @@
         </button>
       </div>
       <div *ngIf="b.thisMonth" class="thisMonth">
-        <a [routerLink]="['day',b.thisMonth]"
+        <a [routerLink]="['/day',b.thisMonth]"
            [queryParams]="{'day':b.thisMonth, 'month':data.month, 'year':data.year}">
           <button class="thisMonthBtn" (click)="selectDay($event)">
             {{b.thisMonth}}

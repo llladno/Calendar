@@ -4,8 +4,10 @@
   {{data.year}}
 </p>
 <div>
-  <button>Назад</button>
   <button (click)="nextMonth()"><a [routerLink]="['/calendar']"
-                                   [queryParams]="{'month': data.month+1, 'year':data.year}">
+                                   [queryParams]="{'month': +data.month < 2 ? 12 : +data.month-1, 'year':+data.month < 2 ? +data.year-1 :data.year}">
+    Назад</a></button>
+  <button (click)="nextMonth()"><a [routerLink]="['/calendar']"
+                                   [queryParams]="{'month': +data.month > 11 ? 1 : +data.month+1, 'year':+data.month > 11 ? +data.year+1 :data.year}">
     Вперёд</a></button>
 </div>
