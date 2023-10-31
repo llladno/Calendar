@@ -4,24 +4,28 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PopUpComponent} from "../pop-up/pop-up.component";
 import {HttpClient} from "@angular/common/http";
 
+interface DayData {
+  status: string,
+    userData: any
+}
+
+
 @Component({
   selector: 'app-day',
   templateUrl: './day.component.html',
   styleUrls: ['./day.component.css']
 })
 export class DayComponent implements OnInit {
-  data: object
-  id: any;
-  times: any = [];
-  minutes: any = []
-  time: any = [];
-  dayData: any
+  data: {day: string, month: string, year:string}
+  times: Array<object> = [];
+  minutes: Array<object> = []
+  time: Array<object> = [];
+  dayData: DayData
 
   constructor(private route: ActivatedRoute,
               private dialogRef: MatDialog,
               private http: HttpClient) {
   }
-
 
   async ngOnInit() {
     this.data = {
@@ -29,7 +33,6 @@ export class DayComponent implements OnInit {
       month: this.route.snapshot.queryParams.month,
       year: this.route.snapshot.queryParams.year,
     }
-
 
     this.times.length = 24
     this.minutes.length = 6
@@ -40,8 +43,7 @@ export class DayComponent implements OnInit {
     await this.http.post('http://localhost:3002/getDayInfo', {
       email: await localStorage.getItem('email'),
       data: this.data
-    }).subscribe(await (res => {
-
+    }).subscribe(await ( (res:any) => {
       this.dayData = res
       // let temp: any = res
       // temp = temp.userData.user
@@ -51,7 +53,6 @@ export class DayComponent implements OnInit {
   }
 
   dialogShow(event: any, newValue:boolean, dataTask:any) {
-    console.log(dataTask)
     let times = event.target.classList
       for (let b = 0; b < 3; b++) {
         if (times[b].includes("time")) {
@@ -61,9 +62,6 @@ export class DayComponent implements OnInit {
           this.time.push(times[b])
         }
       }
-
-      console.log(event.target)
-      // this.dayData.userData[]
 
     let dataDialog = {
       time: this.time[1],
@@ -75,31 +73,31 @@ export class DayComponent implements OnInit {
         : dataDialog = dataDialog
 
     let x = event.pageX + "px"
-
-    this.dialogRef.open(PopUpComponent,
-      {
-        data: dataDialog,
-        height: '400px',
-        width: '500px',
-        backdropClass: 'backdropBackground'
-      });
+    console.log(this.time.length)
+      this.dialogRef.open(PopUpComponent,
+        {
+          data: dataDialog,
+          height: '400px',
+          width: '400px',
+          backdropClass: 'backdropBackground'
+        });
   }
 
   openDialog(event: any) {
     let appRootClass: any = document.getElementsByClassName('appRootClass')[0]
     if (event.target.classList[3]?.slice(0,4) === 'task') {
       let number = +event.target.classList[3].slice(5,100)
-      console.log(number)
-      console.log(this.dayData[event.target.classList[3].slice(5,1000)])
-      console.log(this.dayData)
       this.dialogShow(event,false, this.dayData.userData[number])
 //показывать что то
     } else {
+      console.log(this.time)
       appRootClass.style.filter = 'brightness(0.4)'
       if (this.time.length > 1) {
-        // this.dialogRef.closeAll()
+        this.dialogRef.closeAll()
         this.time = []
-        this.dialogShow(event,true, null)
+        setTimeout(()=>{
+          this.dialogShow(event,true, null)
+        },200)
 
       } else {
         this.dialogShow(event, true, null)
@@ -145,7 +143,6 @@ export class DayComponent implements OnInit {
             if (y.classList[2] === (`time:${+userData.devValue.timeOnDev.hour + h}`)) {
               y.style.background = userData.color || '#0000ff'
               y.classList.add(`task:${ar}`)
-              // y.innerHTML = `<button (click)="showIndoDay()" class="buttonShowInfoDay"></button>`
             }
           })
         } else {
@@ -154,7 +151,6 @@ export class DayComponent implements OnInit {
             if (y.classList[2] === (`time:${userData.devValue.timeOnDev.hour}`)) {
               y.style.background = userData.color || '#0000ff'
               y.classList.add(`task:${ar}`)
-              // y.innerHTML = `<button (click)="showIndoDay()" class="buttonShowInfoDay"></button>`
             }
           })
         }
@@ -163,13 +159,10 @@ export class DayComponent implements OnInit {
       Array.from(firstElement).forEach((x, i) => {
         if (x.classList[0] === userData.devValue.timeOnDev.minutes) {
           firstElement[i].innerHTML = `<p>${userData.timeOn} - ${userData.timeTo}</p>
-<button>Редактировать</button>`
+        <button>Р</button>`
         }
       })
     }
     }
-  }
-  showIndoDay (){
-    console.log('info')
   }
 }

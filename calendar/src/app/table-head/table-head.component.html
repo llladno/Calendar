@@ -1,13 +1,38 @@
-<p>
-  {{data.day?.length === 1? "0"+data.day+'.' :data.day || ''}}
-  {{data.month?.length === 1? "0"+data.month: data.month || ''}}.
-  {{data.year}}
-</p>
-<div>
-  <button (click)="nextMonth()"><a [routerLink]="['/calendar']"
-                                   [queryParams]="{'month': +data.month < 2 ? 12 : +data.month-1, 'year':+data.month < 2 ? +data.year-1 :data.year}">
-    Назад</a></button>
-  <button (click)="nextMonth()"><a [routerLink]="['/calendar']"
-                                   [queryParams]="{'month': +data.month > 11 ? 1 : +data.month+1, 'year':+data.month > 11 ? +data.year+1 :data.year}">
-    Вперёд</a></button>
+<div class="displayFlex">
+  <div class="headDaysSelect">
+    <a [routerLink]="['/day', this.today.getDate()]"
+       [queryParams]="{'day': this.today.getDate(),'month': this.today.getMonth(), 'year': this.today.getFullYear()}">
+      <button>Today</button>
+    </a>
+    <div>
+      <button disabled>Day</button>
+      <button disabled>Week</button>
+      <button disabled>Month</button>
+    </div>
+  </div>
+  <div class="selectBar">
+    <a [routerLink]="['/calendar']"
+       [queryParams]="{'month': +data.month < 2 ? 12 : +data.month-1, 'year':+data.month < 2 ? +data.year-1 :data.year}">
+    <button class ="headBtn"
+            (click)="nextMonth()">
+
+      Назад</button>
+    </a>
+    <p>
+      {{data.day?.length === 1 ? "0" + data.day + '.' : data.day || ''}}
+      {{data.month?.length === 1 ? "0" + data.month : data.month || ''}}.
+      {{data.year}}
+    </p>
+    <div>
+      <a [routerLink]="['/calendar']"
+         [queryParams]="{'month': +data.month > 11 ? 1 : +data.month+1, 'year':+data.month > 11 ? +data.year+1 :data.year}">
+      <button class="headBtn"
+              (click)="nextMonth()">
+
+          Вперёд
+      </button>
+      </a>
+    </div>
+  </div>
 </div>
+

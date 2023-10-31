@@ -54,3 +54,8 @@ app-root{
   background: none;
   border: none;
 }
+
+.displayFlex {
+  display: flex;
+  width: 100%;
+}

@@ -1,6 +1,6 @@
 <ng-container *ngIf="!loading">
+  <app-table-head (parentValueChange)="handleValueChange($event)" [data]="data" class="headPlace"></app-table-head>
   <div class="calendarPlace">
-    <app-table-head (parentValueChange)="handleValueChange($event)" [data]="data" class="headPlace"></app-table-head>
     <div *ngFor="let c of days" class="days">
       <h1 class="HDays">{{c}}</h1>
     </div>

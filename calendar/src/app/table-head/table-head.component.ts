@@ -11,18 +11,17 @@ export class TableHeadComponent implements OnInit{
   @Input() data: any
   @Output() parentValueChange = new EventEmitter<any>();
 
-  current: any;
   date: any;
-  mass: any = []
+  today: Date;
 
   constructor(private route:ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.today = new Date()
     console.log(this.data)
   }
   nextMonth(){
-    console.log(this.route.snapshot.queryParams)
     this.data.month = this.route.snapshot.queryParams.month
     this.parentValueChange.emit(this.data)
   }

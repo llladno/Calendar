@@ -65,10 +65,8 @@ this.getDate(0,0)
 
 
   async getDate(month: any, year: any){
-    console.log(month)
     this.mass = []
     if (month === 0){
-      console.log('this')
       this.current = new Date();
       function getDaysInMonth(year:number, month:number) {
         return new Date(year, month, 0).getDate();
@@ -77,29 +75,17 @@ this.getDate(0,0)
         month: this.current.getMonth() + 1,
         year: this.current.getFullYear(),
         date: getDaysInMonth(this.current.getFullYear(), this.current.getMonth() + 1),
-        firstDay: new Date(this.current.getFullYear(),
-          this.current.getMonth(), 1).getDay(),
+        firstDay: this.current.getDay() === 0 ? 7 : this.current.getDay(),
         allDate: this.current
       }
       let backMonth = getDaysInMonth(this.current.getFullYear(), this.current.getMonth())
-      for(let b = 0; b < this.data.date; b++){
-        this.mass.push({thisMonth: b + 1})
-      }
-      for (let c = 0; c < this.data.firstDay-1; c++){
-
-        this.mass.unshift({lastMonth: backMonth-c})
-      }
+      this.daysFilling(backMonth)
     }
     else{
       {
         this.data = 0
-        console.log(year)
         this.current = await new Date(year,month-1,1);
-        console.log(this.current)
-
-
         function getDaysInMonth(year: number, month: number) {
-          console.log(month, year)
           return new Date(year, month-1, 0).getDate();
         }
 
@@ -107,21 +93,21 @@ this.getDate(0,0)
           month: this.current.getMonth(),
           year: this.current.getFullYear(),
           date: await getDaysInMonth(this.current.getFullYear(), this.current.getMonth()),
-          firstDay: new Date(this.current.getFullYear(),
-            this.current.getMonth(), 1).getDay(),
+          firstDay: this.current.getDay() === 0 ? 7 : this.current.getDay(),
           allDate: this.current
         }
-        console.log(this.current.toLocaleString())
-        let backMonth = getDaysInMonth(this.current.getFullYear(), this.current.getMonth())
-        console.log(await this.data)
-        for (let b = 0; b < this.data.date; b++) {
-          this.mass.push({thisMonth: b + 1})
-          console.log('change')
-        }
-        for (let c = 0; c < this.data.firstDay - 1; c++) {
-
-          this.mass.unshift({lastMonth: backMonth - c})
-        }
+        let backMonth = getDaysInMonth(this.current.getFullYear(), this.current.getMonth()+1)
+        this.daysFilling(backMonth)
       }}
+  }
+
+  daysFilling(backMonth:number){
+    for (let b = 0; b < this.data.date; b++) {
+      this.mass.push({thisMonth: b + 1})
+    }
+    for (let c = 0; c < this.data.firstDay - 1; c++) {
+
+      this.mass.unshift({lastMonth: backMonth - c})
+    }
   }
 }

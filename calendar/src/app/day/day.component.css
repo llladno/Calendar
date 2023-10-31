@@ -1,7 +1,7 @@
 .timeGrid{
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(24, 60px);
+  grid-template-rows: repeat(23, 40px);
   gap: 1px;
   background: #646464;
   border: 1px solid #646464;
@@ -21,11 +21,14 @@
 
 .minutes, .times{
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   background: white;
 }
 
-h1{
+h2{
   margin: 0;
 }
 

@@ -1,0 +1,30 @@
+.headDaysSelect{
+  display: flex;
+}
+
+.headDaysSelect>button{
+  border-radius: 20px;
+  padding: 8px 20px;
+}
+
+.displayFlex{
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectBar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 260px;
+}
+
+.headBtn{
+  background: rgba(15, 28, 63, 0.125);
+  border-radius: 50%;
+  height: 50px;
+  object-fit: cover;
+  width: 50px;
+}
