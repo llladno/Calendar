@@ -33,8 +33,6 @@ connect().then(console.log('ok')).catch(err => {
         : console.log('ok')
 });
 
-app.get('/', async (req, res) => {
-})
 
 // app.get('/registration', async (req, res) => {
 //     res.send('ok')
@@ -91,6 +89,10 @@ app.post('/newTask', async (req, res) => {
     collection.updateOne(filter, {
         $push:{"user.data": array[0]}
     }).catch((err)=>console.log(err))
+})
+
+app.get('/',async (req,res)=>{
+res.send('Hello World')
 })
 
 app.post('/getDayInfo', async (req, res) => {
