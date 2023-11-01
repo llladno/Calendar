@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {FormControl, NgForm, FormGroup} from '@angular/forms'
+import settings from '../../settings.json'
 
 @Component({
   selector: 'app-registration',
@@ -44,6 +45,6 @@ constructor(private http: HttpClient) {
       }
   }
   postData(data: any){
-    return this.http.post('http://localhost:3002/registration', data)
+    return this.http.post(`http://${settings.host}:3002/registration`, data)
   }
 }

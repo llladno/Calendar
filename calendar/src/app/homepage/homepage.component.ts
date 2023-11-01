@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import settings from '../../settings.json';
+
 
 @Component({
   selector: 'app-homepage',
@@ -26,7 +28,9 @@ login: string;
   userConnect(){
     this.email = localStorage.getItem('email')
     this.password = '123';
-    this.http.post('http://localhost:3002/login', {emailControl: this.email}).subscribe( res =>{
+    const url = settings.host
+    console.log(url)
+    this.http.post(`http://${url}:3002/login`, {emailControl: this.email}).subscribe( res =>{
       let temp:any = res
       temp = temp.userData.user
       this.user = temp

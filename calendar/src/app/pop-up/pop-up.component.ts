@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Inject} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import settings from '../../settings.json'
 
 
 @Component({
@@ -42,7 +43,7 @@ export class PopUpComponent implements OnInit {
       (this.groupControl.value.taskControl !== '' || 0)) {
       this.email = localStorage.getItem('email')
 
-      this.http.post('http://localhost:3002/newTask', {
+      this.http.post(`http://${settings.host}:3002/newTask`, {
         email: this.email,
         timeOn: this.data.time + ":" + this.data.minutes,
         timeTo: this.groupControl.value.timeControl,
