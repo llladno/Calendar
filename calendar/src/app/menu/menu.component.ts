@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import settings from '../../settings.json'
 
 @Component({
   selector: 'app-menu',
@@ -23,7 +24,7 @@ export class MenuComponent implements OnInit{
     }
     else {
       let userMail = localStorage.getItem('user')
-      this.http.post('http://localhost:3002/login', {emailControl: userMail}).subscribe( res =>{
+      this.http.post(`http://${settings.host}:3002/login`, {emailControl: userMail}).subscribe( res =>{
         let temp:any = res
         temp = temp.userData.user
         this.user = temp
