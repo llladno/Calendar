@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, NgForm, FormGroup} from '@angular/forms'
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import settings from '../../settings.json'
+import host from '../../host.json'
 
 
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     }
     if (this.sucsessful){
       console.log('ok')
-      this.http.post(`http://${settings.host}:3002/login`, this.groupControl.value).subscribe( res =>{
+      this.http.post(`http://${host.host}:3002/login`, this.groupControl.value).subscribe( res =>{
         let result:any = res
         localStorage.setItem('email', result.userData.user.email)
         window.location.href = '/'

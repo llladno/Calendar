@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PopUpComponent} from "../pop-up/pop-up.component";
 import {HttpClient} from "@angular/common/http";
-import settings from '../../settings.json'
+import host from '../../host.json'
 
 interface DayData {
   status: string,
@@ -41,7 +41,7 @@ export class DayComponent implements OnInit {
   }
 
   async getDayInfo() {
-    await this.http.post(`http://${settings.host}:3002/getDayInfo`, {
+    await this.http.post(`http://${host.host}:3002/getDayInfo`, {
       email: await localStorage.getItem('email'),
       data: this.data
     }).subscribe(await ( (res:any) => {
