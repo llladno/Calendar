@@ -8,7 +8,7 @@ let dayHandler = require("./additional/dayHandler")
 const {cl} = require("yarn/lib/cli");
 // Local Server : 'mongodb://localhost:27017'
 // const urlDB = 'mongodb://127.0.0.1:27017/'
-const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
+const urlDB = 'mongodb://myUserAdmin:abc123@localhost:27017/?authMechanism=DEFAULT'
 
 //Reomote server: 'mongodb://26.226.199.170:27017'
 // const urlDB = 'mongodb://26.226.199.170:27017'
