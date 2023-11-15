@@ -5,14 +5,20 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const {MongoClient} = require('mongodb');
 let dayHandler = require("./additional/dayHandler")
-const {cl} = require("yarn/lib/cli");
+const {cl, date, m} = require("yarn/lib/cli");
+const {timer} = require("./additional/timer");
 // Local Server : 'mongodb://localhost:27017'
 // const urlDB = 'mongodb://127.0.0.1:27017/'
-const urlDB = 'mongodb://myUserAdmin:abc123@localhost:27017/?authMechanism=DEFAULT'
+// const urlDB = 'mongodb://myUserAdmin:abc123@localhost:27017/?authMechanism=DEFAULT'
+const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
 
 //Reomote server: 'mongodb://26.226.199.170:27017'
 // const urlDB = 'mongodb://26.226.199.170:27017'
 
+
+const dateNow = new Date()
+
+const startTime = process.uptime();
 
 let client
 
@@ -231,3 +237,39 @@ app.listen(PORT, () => {
 //         "month": "9",
 //         "year": "2023"
 // }
+
+let time = 0
+const timernewDate = dateNow
+const timeFn = ()=>{
+    let dateTimer = new Date (time*1000)
+    // timernewDate.setSeconds(time)
+    // console.log(dateNow)
+    // console.log(timernewDate - dateNow)
+    // console.log(timernewDate)
+}
+app.get('/info', (req,res)=>{
+    const currentTime = process.uptime();
+    console.log(startTime)
+    console.log(dateNow)
+// Разница между текущим временем и временем запуска сервера
+    const elapsedTimeInSeconds = currentTime - startTime;
+
+// Преобразование секунд в дни, часы, минуты и секунды
+    const days = Math.floor(elapsedTimeInSeconds / (24 * 60 * 60));
+    const hours = Math.floor((elapsedTimeInSeconds % (24 * 60 * 60)) / (60 * 60));
+    const minutes = Math.floor((elapsedTimeInSeconds % (60 * 60)) / 60);
+    const seconds = Math.floor(elapsedTimeInSeconds % 60);
+    res.send({data: {
+        days:days.toString(),
+            hours: hours.toString(),
+            minutes:minutes.toString(),
+            seconds: seconds.toString()
+        },
+        startTime: dateNow.toLocaleString()
+    })
+    console.log(days,hours,minutes, seconds)
+})
+setInterval(()=>{
+    time += 1
+    timeFn()
+},1000)

@@ -2,7 +2,7 @@
   <div class="headDaysSelect">
     <a [routerLink]="['/day', this.today.getDate()]"
        [queryParams]="{'day': this.today.getDate(),'month': this.today.getMonth(), 'year': this.today.getFullYear()}">
-      <button>Today</button>
+      <button onclick="setTimeout(()=> window.location.reload(),2)">Today</button>
     </a>
     <div>
       <button disabled>Day</button>
@@ -16,7 +16,8 @@
     <button class ="headBtn"
             (click)="nextMonth()">
 
-      Назад</button>
+      <img src="assets/img/icon/arrow/Vector-1.png" height="25">
+    </button>
     </a>
     <p>
       {{data.day?.length === 1 ? "0" + data.day + '.' : data.day || ''}}
@@ -28,11 +29,10 @@
          [queryParams]="{'month': +data.month > 11 ? 1 : +data.month+1, 'year':+data.month > 11 ? +data.year+1 :data.year}">
       <button class="headBtn"
               (click)="nextMonth()">
-
-          Вперёд
+          <img src="assets/img/icon/arrow/Vector.png" height="25">
       </button>
+        <app-loading *ngIf="loading"></app-loading>
       </a>
     </div>
   </div>
 </div>
-

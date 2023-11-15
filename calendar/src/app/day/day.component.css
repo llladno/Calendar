@@ -1,7 +1,7 @@
 .timeGrid{
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(23, 40px);
+  grid-template-rows: repeat(25, 40px);
   gap: 1px;
   background: #646464;
   border: 1px solid #646464;
@@ -33,6 +33,7 @@ h2{
 }
 
 .times {
+  font-size: 20px;
 }
 
 .mat-mdc-dialog-container{

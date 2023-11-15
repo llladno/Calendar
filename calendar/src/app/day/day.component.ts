@@ -4,6 +4,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PopUpComponent} from "../pop-up/pop-up.component";
 import {HttpClient} from "@angular/common/http";
 import host from '../../host.json'
+import {collectAnimationNames} from "@angular/compiler-cli/src/ngtsc/annotations/component/src/util";
 
 interface DayData {
   status: string,
@@ -44,8 +45,8 @@ export class DayComponent implements OnInit {
     await this.http.post(`http://${host.host}:3002/getDayInfo`, {
       email: await localStorage.getItem('email'),
       data: this.data
-    }).subscribe(await ( (res:any) => {
-      this.dayData = res
+    }).subscribe( ( async(res:any) => {
+      this.dayData = await res
       // let temp: any = res
       // temp = temp.userData.user
       // this.user = temp
@@ -110,38 +111,46 @@ export class DayComponent implements OnInit {
     await this.getDayInfo()
     !this.dayData ? setTimeout(() => {
         this.setValueToCell()
-      }, 1000)
+      }, 100)
       : null
     if (this.dayData){
+      let b = 0
     for (let ar in this.dayData.userData) {
       let userData = this.dayData.userData[ar]
       let dif = (+userData.devValue.timeToDev.hour * 60 + +userData.devValue.timeToDev.minutes) -
         (+userData.devValue.timeOnDev.hour * 60 + +userData.devValue.timeOnDev.minutes) + 10
+      console.log(dif)
       let h = 1
+      let count = 0
 
-      for (let n = 0; n < (dif / 10); n++) {
+      for (let n = 0; n < (dif / 10)-1; n++) {
         let c: any = n
         if (+userData.devValue.timeOnDev.minutes + n * 10 > 59) {
-
+          console.log(n)
+          console.log()
+          count ++
+          if (count % 7 === 0) h++
+          console.log("COLL", count)
           let check = dif - 60
           c = +userData.devValue.timeOnDev.minutes - dif + n * 10 + check
-          if (c < 0) {
-            c += 10
+          console.log('check',check)
+          if (c > 59){
+            check = dif - 60*h
           }
-
           if (c <= 0 || c === '00') {
             c = '00'
           }
-
-
+          console.log('check',check)
+          c = +userData.devValue.timeOnDev.minutes - dif + n * 10 + check
+          console.log('c',c)
+          if (c <= 0 || c === '00') {
+            c = '00'
+          }
           let element4: any = document.getElementsByClassName(`${c}`)
+          console.log(element4)
           Array.from(element4).forEach((y: any) => {
-            if (c > 60) {// Доделать
-              h = h + 1
-            }
-            console.log(c)
-            console.log(h)
-            if (y.classList[2] === (`time:${+userData.devValue.timeOnDev.hour + h}`)) {
+            console.log('h',h)
+            if (y.classList[2] === (`time:${+userData.devValue.timeOnDev.hour+h}`)) {
               y.style.background = userData.color || '#0000ff'
               y.classList.add(`task:${ar}`)
             }
@@ -157,6 +166,7 @@ export class DayComponent implements OnInit {
         }
       }
       let firstElement = document.getElementsByClassName(`time:${userData.devValue.timeOnDev.hour}`)
+      console.log(firstElement)
       Array.from(firstElement).forEach((x, i) => {
         if (x.classList[0] === userData.devValue.timeOnDev.minutes) {
           firstElement[i].innerHTML = `<p>${userData.timeOn} - ${userData.timeTo}</p>
