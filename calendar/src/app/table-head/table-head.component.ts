@@ -6,8 +6,8 @@ import {ActivatedRoute} from "@angular/router";
   templateUrl: './table-head.component.html',
   styleUrls: ['./table-head.component.css']
 })
-export class TableHeadComponent implements OnInit{
 
+export class TableHeadComponent implements OnInit{
   @Input() data: any
   @Output() parentValueChange = new EventEmitter<any>();
 

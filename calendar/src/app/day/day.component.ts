@@ -22,6 +22,7 @@ export class DayComponent implements OnInit {
   times: Array<object> = [];
   minutes: Array<object> = []
   time: Array<object> = [];
+  isDay:boolean = false
   dayData: DayData
 
   constructor(private route: ActivatedRoute,
@@ -35,7 +36,7 @@ export class DayComponent implements OnInit {
       month: this.route.snapshot.queryParams.month,
       year: this.route.snapshot.queryParams.year,
     }
-
+    if (this.data.day) this.isDay = true
     this.times.length = 24
     this.minutes.length = 6
     await this.setValueToCell()

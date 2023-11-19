@@ -15,9 +15,7 @@
   </div>
   <div class="pointMenu">
       <img src="assets/img/icon/barIcon/calendar.png">
-    <a routerLink="/calendar">
-      <button class="pointsMenuButton">Календарь</button>
-    </a>
+      <button class="pointsMenuButton" (click)="window.location.href = '/calendar'">Календарь</button>
       <img src="assets/img/icon/barIcon/todo.png">
     <button class="pointsMenuButton">TODO</button>
       <img src="assets/img/icon/barIcon/settings.png">

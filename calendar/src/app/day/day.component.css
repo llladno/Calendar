@@ -16,7 +16,8 @@
   background: #646464;
 }
 
-.minutes{
+.timecell{
+  color: #afafaf;
 }
 
 .minutes, .times{

@@ -10,29 +10,30 @@
       <button disabled>Month</button>
     </div>
   </div>
-  <div class="selectBar">
-    <a [routerLink]="['/calendar']"
-       [queryParams]="{'month': +data.month < 2 ? 12 : +data.month-1, 'year':+data.month < 2 ? +data.year-1 :data.year}">
-    <button class ="headBtn"
-            (click)="nextMonth()">
+  <app-select-bar></app-select-bar>
+<!--  <div class="selectBar">-->
+<!--    <a [routerLink]="['/calendar']"-->
+<!--       [queryParams]="{'month': +data.month < 2 ? 12 : +data.month-1, 'year':+data.month < 2 ? +data.year-1 :data.year}">-->
+<!--    <button class ="headBtn"-->
+<!--            (click)="nextMonth()">-->
 
-      <img src="assets/img/icon/arrow/Vector-1.png" height="25">
-    </button>
-    </a>
-    <p>
-      {{data.day?.length === 1 ? "0" + data.day + '.' : data.day || ''}}
-      {{data.month?.length === 1 ? "0" + data.month : data.month || ''}}.
-      {{data.year}}
-    </p>
-    <div>
-      <a [routerLink]="['/calendar']"
-         [queryParams]="{'month': +data.month > 11 ? 1 : +data.month+1, 'year':+data.month > 11 ? +data.year+1 :data.year}">
-      <button class="headBtn"
-              (click)="nextMonth()">
-          <img src="assets/img/icon/arrow/Vector.png" height="25">
-      </button>
-        <app-loading *ngIf="loading"></app-loading>
-      </a>
-    </div>
-  </div>
+<!--      <img src="assets/img/icon/arrow/Vector-1.png" height="25">-->
+<!--    </button>-->
+<!--    </a>-->
+<!--    <p>-->
+<!--      {{data.day?.length === 1 ? "0" + data.day + '.' : data.day || ''}}-->
+<!--      {{data.month?.length === 1 ? "0" + data.month : data.month || ''}}.-->
+<!--      {{data.year}}-->
+<!--    </p>-->
+<!--    <div>-->
+<!--      <a [routerLink]="['/calendar']"-->
+<!--         [queryParams]="{'month': +data.month > 11 ? 1 : +data.month+1, 'year':+data.month > 11 ? +data.year+1 :data.year}">-->
+<!--      <button class="headBtn"-->
+<!--              (click)="nextMonth()">-->
+<!--          <img src="assets/img/icon/arrow/Vector.png" height="25">-->
+<!--      </button>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--  </div>-->
+ <app-loading *ngIf="loading"></app-loading>
 </div>

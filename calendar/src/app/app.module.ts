@@ -18,6 +18,7 @@ import { DayComponent } from './day/day.component';
 import { TableHeadComponent } from './table-head/table-head.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { SelectBarComponent } from './table-head/select-bar/select-bar.component';
 
 
 
@@ -43,6 +44,7 @@ const appRoutes: Routes =[
     DayComponent,
     TableHeadComponent,
     PopUpComponent,
+    SelectBarComponent,
   ],
   imports: [
     BrowserModule,

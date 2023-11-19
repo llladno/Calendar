@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableHeadComponent } from './table-head.component';
+import {SelectBarComponent} from "./select-bar/select-bar.component";
 
 describe('TableHeadComponent', () => {
   let component: TableHeadComponent;

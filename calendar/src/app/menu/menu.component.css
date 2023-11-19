@@ -23,8 +23,9 @@ button{
 }
 
 .menuBorder{
+  background: #cdd0f6;
+  height: 100%;
   padding: 20px;
-  border: 1px solid black;
   transition: all 0.5s ease-out;
   width: 100%;
   max-width: 250px;
@@ -51,6 +52,7 @@ button{
 
 .pointsMenuButton:hover{
   color: #646464;
+  background: rgba(210, 210, 210, 0.44);
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 20px;
   padding: 0px 20px 0px 20px;
