@@ -71,4 +71,61 @@ html, body{
     height: 100%;
     position: absolute;
     z-index: 5;
+    color: #ffffff;
+    padding-left: 300px;
+    font-size: 48px;
+}
+
+.buttonCenter {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#myWorks {
+    font-size: 30px;
+    border: 3px solid #e674ea;
+    width: 400px;
+    height: 80px;
+    border-radius: 50px;
+    animation: myWorks 4s infinite alternate ease-in;
+    animation-iteration-count: infinite;
+    padding: 5px 15px;
+    background: none;
+    color: #ffffff;
+    /*--angle: 0deg;*/
+    /*width: 150px;*/
+    /*height: 50px;*/
+    /*border: 3px solid;*/
+
+    /*border-image: linear-gradient(var(--angle), #fc64c3, #b166da) 1;*/
+    /*animation: 2s rotate linear infinite;*/
+    /*border-radius: 50em;*/
+}
+
+.aboutMe p{
+    font-size: 30px;
+    width: 50%;
+    text-align: justify;
+}
+
+
+@keyframes myWorks {
+
+    0% {
+        border: 3px solid #e674ea;
+    }
+    25% {
+        border: 3px solid #922ffc;
+
+    }
+    50% {
+        border: 3px solid #5965e7;
+    }
+    75% {
+        border: 3px solid #922ffc
+    }
+    100% {
+        border: 3px solid #e674ea;
+    }
 }
