@@ -1,3 +1,51 @@
 .dialogRefDisplay{
   margin: 20px 20px;
 }
+
+.circleColorOut{
+  padding: 0;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  transition: ease-in 0.2s;
+  border-radius: 50%;
+  background-color: #ffffff; /* Белый цвет */
+  box-sizing: border-box; /* Учитывает границу в общем размере элемента */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Outred{
+  border: 2px solid red; /* Красная граница */
+}
+
+
+.Outyellow{
+  border: 2px solid #e5e239; /* Красная граница */
+}
+.Outgreen{
+  border: 2px solid #5ccc37; /* Красная граница */
+}
+
+.circleColorIn {
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background: white;
+  transition: ease-in 0.2s;
+}
+
+.circleColorIn:hover {
+  transition: ease-in 0.2s;
+}
+
+.red:hover{
+  background: red;
+}
+.yellow:hover{
+  background: #e5e239;
+}
+.green:hover{
+  background: #5ccc37;
+}

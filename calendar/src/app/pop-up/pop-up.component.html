@@ -11,7 +11,16 @@
       <p>Задача</p>
       <input formControlName="taskControl">
       <p>Цвет</p>
-      <input type="color" class="colorInput" formControlName="colorControl" value="#0000FF">
+      <button class="circleColorOut Outred">
+        <div class="circleColorIn red"></div>
+      </button>
+      <button class="circleColorOut Outyellow">
+        <div class="circleColorIn yellow"></div>
+      </button>
+      <button class="circleColorOut Outgreen">
+        <div class="circleColorIn green"></div>
+      </button>
+
       <div>
         <button type="submit">Отправить</button>
         <button type="button" (click)="close()">close</button>
