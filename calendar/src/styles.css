@@ -4,6 +4,7 @@
 body {
   margin: 0;
   z-index: 1;
+  background: var(--grey-bg-color);
 }
 
 *{
@@ -16,7 +17,7 @@ p{
 }
 
 .displayHomepage{
-  background: white;
+  background: var(--grey-bg-color);
   display: grid;
   transition: ease-in;
   grid-template-columns: 20% 70%;

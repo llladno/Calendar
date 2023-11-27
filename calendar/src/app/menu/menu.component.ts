@@ -37,13 +37,16 @@ export class MenuComponent implements OnInit{
     let userLogin = this.userLogin.nativeElement.querySelector('.userLogin')
     let rotatePointMenu = this.rotatePointMenu.nativeElement.querySelector('.rotatePointMenu')
     let pointsMenuButton = this.pointsMenuButton.nativeElement.querySelectorAll('.pointsMenuButton')
+    let pointsMenuButtonLogout = this.pointsMenuButton.nativeElement.querySelectorAll('.pointsMenuButtonLogout')[0]
 
     if (this.flip){
       bar.style.width = '100%'
       userLogin.style.opacity = '1'
       userLogin.style.width = '50%'
       rotatePointMenu.style.transform = 'rotate(0)'
+
       for (let b = 0; b< pointsMenuButton.length;b++) pointsMenuButton[b].style.opacity = '1'
+      pointsMenuButtonLogout.style.opacity = '1'
       this.flip = false
     }
     else{
@@ -52,6 +55,7 @@ export class MenuComponent implements OnInit{
       userLogin.style.width = '0'
       rotatePointMenu.style.transform = 'rotate(90deg)'
       for (let b = 0; b< pointsMenuButton.length;b++) pointsMenuButton[b].style.opacity = '0'
+      pointsMenuButtonLogout.style.opacity = '0'
 
       this.flip = true
     }

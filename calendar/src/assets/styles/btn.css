@@ -2,10 +2,11 @@ button{
   background: #eaeaea;
   border-radius: 10px;
   padding: 5px 10px;
-  border: 1px solid #afafaf;
+  border: none;
   margin: 0 5px;
 }
 
 button:hover{
   background: #d5d5d5;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

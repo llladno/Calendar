@@ -17,10 +17,10 @@
       <img src="assets/img/icon/barIcon/calendar.png">
       <button class="pointsMenuButton" (click)="window.location.href = '/calendar'">Календарь</button>
       <img src="assets/img/icon/barIcon/todo.png">
-    <button class="pointsMenuButton">TODO</button>
+    <button class="pointsMenuButton" disabled>TODO</button>
       <img src="assets/img/icon/barIcon/settings.png">
-    <button class="pointsMenuButton">Настройки</button>
-      <button (click)="window.location.href = '/login'">Выйти</button>
+    <button class="pointsMenuButton" disabled>Настройки</button>
+      <button (click)="window.location.href = '/login'" class="pointsMenuButtonLogout">Выйти</button>
   </div>
 
 </div>

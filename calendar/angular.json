@@ -26,6 +26,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/assets/styles/patterns.css",
               "src/assets/styles/btn.css"
             ],
             "scripts": []
@@ -89,6 +90,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/assets/styles/patterns.css",
               "src/assets/styles/btn.css"
             ],
             "scripts": []

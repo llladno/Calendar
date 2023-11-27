@@ -23,7 +23,7 @@ button{
 }
 
 .menuBorder{
-  background: #cdd0f6;
+  background: #f1f1f1;
   height: 100%;
   padding: 20px;
   transition: all 0.5s ease-out;
@@ -31,6 +31,7 @@ button{
   max-width: 250px;
   border-radius: 0px 20px 20px 0px;
   overflow: hidden;
+  border: 2px solid #d5d5d5;
 }
 
 .userLogin{
@@ -45,19 +46,43 @@ button{
 }
 
 .pointsMenuButton{
-  font-size: 22px;
+  background: #e6e6e6;
+  border-radius: 20px;
+  font-size: 20px;
   opacity: 1;
   transition: all 0.25s ease-out;
+  padding: 0 20px;
 }
 
 .pointsMenuButton:hover{
   color: #646464;
-  background: rgba(210, 210, 210, 0.44);
+  background: rgb(240, 240, 245);
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 20px;
-  padding: 0px 20px 0px 20px;
+  padding: 0 25px;
 }
 
+.pointsMenuButtonLogout {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 4;
+  background: #e6e6e6;
+  width: 90%;
+  border-radius: 20px;
+  font-size: 20px;
+  opacity: 1;
+  transition: all 0.25s ease-out;
+  padding: 10px 20px;
+}
+
+.pointsMenuButtonLogout:hover{
+  color: #646464;
+  background: rgb(240, 240, 245);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 20px;
+  padding: 10px 25px;
+}
 
 .profileDisplay{
   display: flex;
@@ -69,6 +94,7 @@ button{
 }
 
 .pointMenu{
+  width: 100%;
   display: grid;
   grid-template-columns: 70px 1fr;
   justify-items: start;
