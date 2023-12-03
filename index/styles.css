@@ -1,19 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
 
-
-*{
+* {
     font-family: 'Manrope', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-html, body{
+html, body {
     width: 100vw;
     overflow-x: hidden;
+    background: #373737;
+    color: white;
 }
 
-.bar{
+h1 {
+    text-align: center;
+}
+
+.bar {
     display: flex;
     justify-content: space-between;
     width: 94%;
@@ -24,28 +29,28 @@ html, body{
     background: #3f3f3f;
 }
 
-.links{
+.links {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.links *{
+.links * {
     margin: 0 10px;
 }
 
-.links img{
+.links img {
     width: 30px;
 }
 
-.slide1{
+.slide1 {
     position: relative;
     overflow: hidden;
     height: 100vh;
     width: 100vw;
 }
 
-#myVideo{
+#myVideo {
     position: absolute;
     width: 100%;
     z-index: 1;
@@ -57,13 +62,13 @@ html, body{
     z-index: 3;
 }
 
-.slide1-1{
+.slide1-1 {
     overflow: hidden;
     width: 100%;
     height: 100%;
 }
 
-.frontendDeveloper{
+.frontendDeveloper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,12 +108,92 @@ html, body{
     /*border-radius: 50em;*/
 }
 
-.aboutMe p{
-    font-size: 30px;
-    width: 50%;
-    text-align: justify;
+.aboutMe {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 
+.aboutMe p {
+    font-size: 30px;
+    text-align: center;
+}
+
+.aboutMeFlex {
+    height: 80%;
+    display: grid;
+    grid-template-columns: 45% 100px 45%;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding: 0px 20px 0px 20px;
+}
+
+.slieder1 {
+    width: 90%;
+    background: #5ccc37;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    animation: myWorks 4s infinite alternate ease-in;
+}
+
+.moveSlides{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    right: 0px;
+    transition: 1s ease-in-out;
+}
+
+.steck {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-rows: 250px;
+    row-gap: 30px;
+    text-align: center;
+}
+
+.steckCard {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.steckCardLevel1 {
+    width: 200px;
+    height: 350px;
+    background: #3f3f3f;
+    padding-top: 20px;
+    margin: 30px 20px 0px 20px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 20px;
+}
+
+.steckCardLevel1:hover {
+    transition: 0.2s ease-in-out;
+    background: #343434;
+}
+
+.steckCardLevel2 {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 85%;
+}
+
+.aboutMeFlex h1{
+    font-size: 50px;
+}
+
+.expiriens{
+    display: grid;
+    row-gap: 30px;
+    justify-items: center
+}
 
 @keyframes myWorks {
 
@@ -127,5 +212,117 @@ html, body{
     }
     100% {
         border: 3px solid #e674ea;
+    }
+}
+
+.backgroundBorders {
+    position: relative;
+    width: 100%;
+    height: 0px;
+    z-index: 1;
+}
+
+.backgroundBorders div {
+    background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+
+    margin: 20px;
+}
+
+.backgroundBorders1 {
+    filter: blur(4px);
+    position: relative;
+    left: 85%;
+    width: 180px;
+    height: 200px;
+    border-radius: 60% 40% 42% 58% / 44% 48% 52% 56%;
+    animation: backgroundBorders1 5s infinite alternate ease-in-out;
+}
+
+.backgroundBorders2 {
+    filter: blur(7px);
+    position: relative;
+    left: 10%;
+    top: 25%;
+    width: 120px;
+    height: 100px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: backgroundBorders2 6s infinite alternate ease-in-out;
+}
+
+.backgroundBorders3 {
+    filter: blur(4px);
+    position: relative;
+    left: 10%;
+    top: 300px;
+    width: 120px;
+    height: 100px;
+    border-radius: 60% 40% 42% 58% / 44% 48% 52% 56%;
+    animation: backgroundBorders3 5s infinite alternate ease-in-out;
+}
+
+.line {
+    height: 85%;
+    width: 4px;
+    background: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+}
+
+
+@keyframes backgroundBorders1 {
+    0% {
+        border-radius: 45% 55% 47% 53% / 54% 49% 51% 46%;
+        width: 180px;
+        left: 85%;
+    }
+
+
+    50% {
+        border-radius: 51% 49% 47% 53% / 64% 25% 75% 36%;
+        width: 190px;
+        left: 84%;
+    }
+
+    100% {
+        border-radius: 51% 49% 47% 53% / 55% 52% 48% 45%;
+        left: 85%;
+        width: 180px;
+    }
+}
+
+@keyframes backgroundBorders2 {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(0deg);
+    }
+
+
+    50% {
+        border-radius: 59% 41% 77% 23% / 30% 62% 38% 70%;
+        transform: rotate(35deg);
+    }
+
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes backgroundBorders3 {
+    0% {
+        border-radius: 45% 55% 47% 53% / 54% 49% 51% 46%;
+        width: 180px;
+        left: 10%;
+    }
+
+
+    50% {
+        border-radius: 51% 49% 47% 53% / 64% 25% 75% 36%;
+        width: 190px;
+        left: 9%;
+    }
+
+    100% {
+        border-radius: 51% 49% 47% 53% / 55% 52% 48% 45%;
+        left: 10%;
+        width: 180px;
     }
 }
