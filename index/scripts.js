@@ -16,3 +16,17 @@ let iterat = 0
             console.log(slieder1Width*iterat)
         }
     }, 3000)
+
+function changePhoto(id) {
+    let exampleWorks = document.getElementsByClassName('exampleWorks')[0]
+    if (id === 1) {
+        exampleWorks.innerHTML = '<img src="assets/slider/calendar.png">'
+    }
+    if (id === 2) {
+        exampleWorks.innerHTML = '<img src="assets/slider/studio.png">'
+    }
+    if (id === 3) {
+        exampleWorks.innerHTML = '<img src="assets/slider/semicat.png">'
+    }
+
+}

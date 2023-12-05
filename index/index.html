@@ -29,7 +29,7 @@
                     <div>
                         <h1>Frontend-разработчик</h1>
                         <div class="buttonCenter">
-                            <button id="myWorks">Мои работы</button>
+                            <button id="myWorks" onclick="window.location.href='#myWork'">Мои работы</button>
                         </div>
                     </div>
                 </div>
@@ -86,6 +86,30 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+    <div id="myWork">
+        <h1>Мои работы</h1>
+        <div class="myWorksGrid">
+            <div class="selectSiteGrid">
+                <button class="selectSite" onclick="changePhoto(1)">
+                    <a href="">Календарь</a>
+                    <p>Front: Angular<br>
+                        Back: NodeJS, MongoDB</p>
+                </button>
+                <button class="selectSite" onclick="changePhoto(2)">
+                    <a href="">Студия</a>
+                    <p>Front: React<br>
+                        Back: NodeJS, PostgresSQL</p>
+                </button>
+                <button class="selectSite" onclick="changePhoto(3)">
+                    <a href="">Лендинг аренды тех. средств</a>
+                    <p>Front: HTML, CSS, JS</p>
+                </button>
+            </div>
+            <div class="exampleWorks">
+                <img src="./assets/slider/calendar.png" style="width: 100%">
             </div>
         </div>
     </div>

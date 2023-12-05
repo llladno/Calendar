@@ -266,6 +266,35 @@ h1 {
     background: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
 }
 
+#myWork{
+    height: 100vh;
+    margin: 0 200px
+}
+
+.myWorksGrid{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 30% 70%;
+}
+
+.myWorksGrid img{
+    width: 100%;
+}
+
+.selectSiteGrid {
+    display: grid;
+    justify-content: space-around;
+    grid-template-rows: repeat(3, 20%);
+    align-items: center;
+    align-content: space-between;
+    text-align: left;
+}
+
+.selectSite {
+    padding: 10px 30px;
+    height: 100%;
+}
+
 
 @keyframes backgroundBorders1 {
     0% {
