@@ -37,9 +37,7 @@
         </div>
     </div>
     <div class="aboutMe">
-        <div style="height: 100%">
             <h1 style="text-align: center">Обо мне</h1>
-
             <div class="backgroundBorders">
                 <div class="backgroundBorders1"></div>
                 <div class="backgroundBorders2"></div>
@@ -84,37 +82,38 @@
                             <img src="assets/slider/semicat.png" style="width: 100%">
                         </div>
                     </div>
-                </div>
-
             </div>
         </div>
     </div>
+
     <div id="myWork">
         <h1>Мои работы</h1>
         <div class="myWorksGrid">
             <div class="selectSiteGrid">
-                <button class="selectSite" onclick="changePhoto(1)">
-                    <a href="">Календарь</a>
+                <button class="selectSite selectedSite" onclick="changePhoto(event, 0)">
+                    <a href="http://109.68.215.157:4200/" target="_blank">Календарь</a>
                     <p>Front: Angular<br>
                         Back: NodeJS, MongoDB</p>
                 </button>
-                <button class="selectSite" onclick="changePhoto(2)">
+                <button class="selectSite" onclick="changePhoto(event, 1)">
                     <a href="">Студия</a>
                     <p>Front: React<br>
                         Back: NodeJS, PostgresSQL</p>
                 </button>
-                <button class="selectSite" onclick="changePhoto(3)">
+                <button class="selectSite" onclick="changePhoto(event, 2)">
                     <a href="">Лендинг аренды тех. средств</a>
-                    <p>Front: HTML, CSS, JS</p>
+                    <p aria-disabled="true">Front: HTML, CSS, JS</p>
                 </button>
             </div>
             <div class="exampleWorks">
-                <img src="./assets/slider/calendar.png" style="width: 100%">
+                <img src="./assets/slider/calendar.png" >
             </div>
         </div>
     </div>
+    <div id="skills">
+        <h1>Навыки</h1>
+            <img src="assets/skills/skills.png">
+    </div>
 </div>
-
-
 </body>
 </html>

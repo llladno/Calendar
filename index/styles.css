@@ -12,7 +12,13 @@ html, body {
     overflow-x: hidden;
     background: #373737;
     color: white;
+    scroll-behavior: smooth;
 }
+
+a{
+    margin: 0;
+}
+
 
 h1 {
     text-align: center;
@@ -112,6 +118,9 @@ h1 {
     height: 100vh;
     width: 100%;
     overflow: hidden;
+    display: grid;
+    align-items: center;
+    grid-template-rows: 10% 0 90%;
 }
 
 .aboutMe p {
@@ -165,7 +174,7 @@ h1 {
 .steckCardLevel1 {
     width: 200px;
     height: 350px;
-    background: #3f3f3f;
+    background: #242424;
     padding-top: 20px;
     margin: 30px 20px 0px 20px;
     text-align: center;
@@ -252,8 +261,8 @@ h1 {
 .backgroundBorders3 {
     filter: blur(4px);
     position: relative;
-    left: 10%;
-    top: 300px;
+    left: 37%;
+    top: 360px;
     width: 120px;
     height: 100px;
     border-radius: 60% 40% 42% 58% / 44% 48% 52% 56%;
@@ -267,14 +276,18 @@ h1 {
 }
 
 #myWork{
-    height: 100vh;
-    margin: 0 200px
+    height: 95vh;
+    margin: 0 200px;
+    display: grid;
+    align-items: center;
 }
 
 .myWorksGrid{
+
     display: grid;
     width: 100%;
     grid-template-columns: 30% 70%;
+    align-content: space-between
 }
 
 .myWorksGrid img{
@@ -284,16 +297,83 @@ h1 {
 .selectSiteGrid {
     display: grid;
     justify-content: space-around;
-    grid-template-rows: repeat(3, 20%);
+    grid-template-rows: repeat(3, 30%);
     align-items: center;
     align-content: space-between;
     text-align: left;
+    width: 100%;
 }
 
 .selectSite {
+    background: #242424;
     padding: 10px 30px;
     height: 100%;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    text-align: left;
 }
+
+.selectSite p{
+    pointer-events: none !important;
+}
+
+
+.selectSite a{
+    color: white;
+    background:  linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    animation: 3s bgAnimation ease-in-out infinite;
+}
+
+.selectSite > a {
+    padding: 0 5px;
+    box-shadow: inset 0 0 0 0 white;
+    transition: all 0.5s ease-in-out 0s;
+}
+.selectSite > a:hover{
+     box-shadow: inset 0 300px 0 0 white;
+    color: #205ccc;
+ }
+
+.selectSite p{
+    margin-top: 10px;
+}
+
+.selectedSite{
+ background: #434343;
+}
+
+.exampleWorks{
+    border-radius: 30px;
+    border: 3px solid #e674ea;;
+    animation: myWorks 6s ease-in-out infinite;
+    overflow: hidden;
+}
+
+.exampleWorks img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#skills {
+    display: grid;
+    grid-template-rows: 20% 60%;
+    height: 95vh;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+}
+
+#skills img {
+    width: 90%;
+object-fit: cover;
+}
+
+
 
 
 @keyframes backgroundBorders1 {
@@ -338,20 +418,23 @@ h1 {
 @keyframes backgroundBorders3 {
     0% {
         border-radius: 45% 55% 47% 53% / 54% 49% 51% 46%;
-        width: 180px;
-        left: 10%;
+        width: 150px;
+        left: 37%;
+    transform: rotate(20deg);
     }
 
 
     50% {
         border-radius: 51% 49% 47% 53% / 64% 25% 75% 36%;
-        width: 190px;
-        left: 9%;
+        width: 150px;
+        left: 37%;
+        transform: rotate(60deg);
     }
 
     100% {
         border-radius: 51% 49% 47% 53% / 55% 52% 48% 45%;
-        left: 10%;
-        width: 180px;
+        left: 37%;
+        width: 150px;
+        transform: rotate(25deg);
     }
 }

@@ -17,16 +17,29 @@ let iterat = 0
         }
     }, 3000)
 
-function changePhoto(id) {
+function changePhoto(event,id) {
     let exampleWorks = document.getElementsByClassName('exampleWorks')[0]
-    if (id === 1) {
-        exampleWorks.innerHTML = '<img src="assets/slider/calendar.png">'
+    let selectSite = document.getElementsByClassName('selectSite')
+    if (!Array.from(event.target.classList).includes('selectedSite')){
+        if (id === 0) {
+            exampleWorks.innerHTML = '<img src="assets/slider/calendar.png">'
+            event.target.classList.add('selectedSite')
+        }
+        if (id === 1) {
+            exampleWorks.innerHTML = '<img src="assets/slider/studio.png">'
+            event.target.classList.add('selectedSite')
+        }
+        if (id === 2) {
+            exampleWorks.innerHTML = '<img src="assets/slider/semicat.png">'
+            event.target.classList.add('selectedSite')
+        }
     }
-    if (id === 2) {
-        exampleWorks.innerHTML = '<img src="assets/slider/studio.png">'
-    }
-    if (id === 3) {
-        exampleWorks.innerHTML = '<img src="assets/slider/semicat.png">'
-    }
+
+    Array.from(selectSite).map((x, index)=>{
+        console.log(x.classList.remove)
+        if (index !== id)x.classList.remove('selectedSite')
+        console.log(index)
+    })
+
 
 }
