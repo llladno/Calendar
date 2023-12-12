@@ -16,7 +16,8 @@ export class PopUpComponent implements OnInit {
 
   groupControl: FormGroup;
   email: any;
-  user: any
+  user: any;
+  color: string;
 
   defaultColor: string = '#0000FF'
 
@@ -48,7 +49,7 @@ export class PopUpComponent implements OnInit {
         timeOn: this.data.time + ":" + this.data.minutes,
         timeTo: this.groupControl.value.timeControl,
         task: this.groupControl.value.taskControl,
-        color: this.groupControl.value.colorControl,
+        color: this.color,
         dayData: this.data.dayData
       }).subscribe(res => {
         // let temp: any = res
@@ -66,5 +67,11 @@ export class PopUpComponent implements OnInit {
     let appRootClass: any = document.getElementsByClassName('appRootClass')[0]
     appRootClass.style.removeProperty('filter')
     this.dialogRef.closeAll()
+  }
+
+  setColor(event:any,color:string, setClass:string){
+    event.target.classList.add(setClass)
+    this.color = color
+
   }
 }

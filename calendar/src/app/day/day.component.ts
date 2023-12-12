@@ -170,7 +170,7 @@ export class DayComponent implements OnInit {
       console.log(firstElement)
       Array.from(firstElement).forEach((x, i) => {
         if (x.classList[0] === userData.devValue.timeOnDev.minutes) {
-          firstElement[i].innerHTML = `<p>${userData.timeOn} - ${userData.timeTo}</p>
+          firstElement[i].innerHTML = `<p class="timecell">${userData.timeOn} - ${userData.timeTo}</p>
         <button>Р</button>`
         }
       })

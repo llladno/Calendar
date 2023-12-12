@@ -17,6 +17,7 @@
 }
 
 .timecell{
+  pointer-events: none;
   color: #afafaf;
 }
 

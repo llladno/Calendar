@@ -27,10 +27,10 @@ export class TableHeadComponent implements OnInit{
     this.today = new Date()
     if (this.data.day) this.isDay = true
     else if(!this.data.day) this.isDay = false
-
-
     console.log(this.data)
   }
+
+
   nextMonth(){
 
     console.log(this.data)
@@ -42,10 +42,15 @@ export class TableHeadComponent implements OnInit{
     this.route.queryParams.subscribe((x:any)=>{
       window.location.reload()
     })
-      setTimeout(()=>{
-        window.location.reload()
-      },20)
+      // setTimeout(()=>{
+      //   window.location.reload()
+      // },20)
     console.log(this.dayInMonth)
+  }
+
+  change(){
+    this.route.queryParams.subscribe(()=>{
+      console.log('work2312312')})
   }
 
   nextDay(direction:string){
@@ -54,11 +59,20 @@ export class TableHeadComponent implements OnInit{
       return new Date(year, month, 0).getDate();
     }
     this.dayInMonth = getDaysInMonth(+this.data.year,+this.data.month)
+    console.log(+this.data.day)
+    console.log(this.dayInMonth)
+    console.log(+this.data.day > +this.dayInMonth-1)
     if (direction === 'next'){
+      if (this.data.month > 11 && +this.data.day+1 > +this.dayInMonth) {
+        console.log('Worked')
+        this.data.year = +this.data.year + 1
+      }
+      console.log(this.data.month)
+      console.log(+this.data.month > 12)
       newData = {
         day: +this.data.day > +this.dayInMonth-1 ? 1: +this.data.day+1,
-        month: +this.data.month > 11 ? 1 : +this.data.month,
-        year:+this.data.month > 11 ? +this.data.year+1 :this.data.year
+        month: +this.data.month > 12 ? 1 : +this.data.month,
+        year:+this.data.month > 12 ? +this.data.year+1 :this.data.year
       }
       console.log(newData)
       if (newData.day - +this.data.day < 0) {
@@ -83,13 +97,14 @@ export class TableHeadComponent implements OnInit{
         }
       console.log(newData)
     }
-      // const urlTree = this.router.createUrlTree([], {
-      //   relativeTo: this.route,
-      //   queryParams: {'day': newData.day,'month': newData.month, 'year': newData.year},
-      //   queryParamsHandling: "merge",
-      //   preserveFragment: true });
-      // this.router.navigateByUrl(urlTree)
-      //   .then(()=>window.location.reload());
+      const urlTree = this.router.createUrlTree([], {
+        relativeTo: this.route,
+        queryParams: {'day': newData.day,'month': newData.month, 'year': newData.year},
+        queryParamsHandling: "merge",
+        preserveFragment: true });
+      this.router.navigateByUrl(urlTree)
+        .then(()=>window.location.reload());
+
 
 }
   changeDay(){

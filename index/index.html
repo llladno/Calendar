@@ -6,38 +6,45 @@
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
 </head>
-<body>
+<body onload="loadedBody()">
 
 <div class="mainGrid">
-    <div class="slide1">
-        <div class="bar">
-            <h3>llladno</h3>
-            <div class="links">
-                <a>Обо мне</a>
-                <a href="https://t.me/llladnooo" target="_blank"><img src="assets/telegram.png"></a>
-                <a href="https://github.com/llladno?tab=repositories" target="_blank"><img src="assets/github.png"></a>
-                <a href="" target="_blank"><img src="assets/question-mark.png"></a>
+    <div class="scrollSlide1">
+
+
+        <div class="slide1">
+            <div class="bar">
+                <h3>llladno</h3>
+                <div class="links">
+                    <a>Обо мне</a>
+                    <a href="https://t.me/llladnooo" target="_blank"><img src="assets/telegram.png"></a>
+                    <a href="https://github.com/llladno?tab=repositories" target="_blank"><img src="assets/github.png"></a>
+                    <a href="" target="_blank"><img src="assets/question-mark.png"></a>
+                </div>
             </div>
-        </div>
-        <div class="slide1-1">
-            <div>
-                <img src="assets/capybara2.png" id="capybara">
-                <video autoplay muted loop id="myVideo">
-                    <source src="assets/programming.mp4" type="video/mp4">
-                </video>
-                <div class="frontendDeveloper">
-                    <div>
-                        <h1>Frontend-разработчик</h1>
-                        <div class="buttonCenter">
-                            <button id="myWorks" onclick="window.location.href='#myWork'">Мои работы</button>
+            <div class="slide1-1">
+                <div>
+                    <img src="assets/capybara2.png" id="capybara">
+                    <video autoplay muted loop id="myVideo">
+                        <source src="assets/programming.mp4" type="video/mp4">
+                    </video>
+                    <div class="frontendDeveloper">
+                        <div>
+                            <h1>Frontend-разработчик</h1>
+                            <div class="buttonCenter">
+                                <button id="myWorks" onclick="window.location.href='#myWork'">Мои работы</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="aboutMe">
-            <h1 style="text-align: center">Обо мне</h1>
+    <div class="scrollSlide2">
+
+
+        <div class="aboutMe">
+            <h1 style="text-align: center" class="h1Style">Обо мне</h1>
             <div class="backgroundBorders">
                 <div class="backgroundBorders1"></div>
                 <div class="backgroundBorders2"></div>
@@ -59,12 +66,13 @@
                         </div>
                         <div class="steckCardLevel1">
                             <div class="steckCardLevel2">
-                                <img src="assets/icon/mysql.png"><img src="assets/icon/mongo.png"></div>
+                                <img src="assets/icon/mysql.png"><img src="assets/icon/mongo.png"
+                                                                      style="transform: rotate(-35deg)"></div>
                             DataBase
                         </div>
                         <div class="steckCardLevel1">
                             <div class="steckCardLevel2">
-                                <img src="assets/icon/node-js.png"></div>
+                                <img src="assets/icon/node-js.png" style="width: 95%;"></div>
                             Back
                         </div>
                     </div>
@@ -82,37 +90,50 @@
                             <img src="assets/slider/semicat.png" style="width: 100%">
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="scrollSlide3">
 
-    <div id="myWork">
-        <h1>Мои работы</h1>
-        <div class="myWorksGrid">
-            <div class="selectSiteGrid">
-                <button class="selectSite selectedSite" onclick="changePhoto(event, 0)">
-                    <a href="http://109.68.215.157:4200/" target="_blank">Календарь</a>
-                    <p>Front: Angular<br>
-                        Back: NodeJS, MongoDB</p>
-                </button>
-                <button class="selectSite" onclick="changePhoto(event, 1)">
-                    <a href="">Студия</a>
-                    <p>Front: React<br>
-                        Back: NodeJS, PostgresSQL</p>
-                </button>
-                <button class="selectSite" onclick="changePhoto(event, 2)">
-                    <a href="">Лендинг аренды тех. средств</a>
-                    <p aria-disabled="true">Front: HTML, CSS, JS</p>
-                </button>
-            </div>
-            <div class="exampleWorks">
-                <img src="./assets/slider/calendar.png" >
+
+        <div id="myWork">
+            <h1 class="h1Style">Мои работы</h1>
+            <div class="myWorksGrid">
+                <div class="selectSiteGrid">
+                    <button class="selectSite selectedSite" onclick="changePhoto(event, 0)">
+                        <a href="http://109.68.215.157:4200/" target="_blank">Календарь</a>
+                        <p>Front: Angular<br>
+                            Back: NodeJS, MongoDB</p>
+                    </button>
+                    <button class="selectSite" onclick="changePhoto(event, 1)">
+                        <a href="">Студия</a>
+                        <p>Front: React<br>
+                            Back: NodeJS, PostgresSQL</p>
+                    </button>
+                    <button class="selectSite" onclick="changePhoto(event, 2)">
+                        <a href="">Лендинг аренды тех. средств</a>
+                        <p aria-disabled="true">Front: HTML, CSS, JS</p>
+                    </button>
+                </div>
+                <div class="exampleWorks">
+                    <img src="./assets/slider/calendar.png">
+                </div>
             </div>
         </div>
     </div>
-    <div id="skills">
-        <h1>Навыки</h1>
-            <img src="assets/skills/skills.png">
+    <div class="scrollSlide4">
+        <div id="skills">
+            <h1 class="h1Style">Навыки</h1>
+            <img src="assets/skills/skills.png" class="skillsImg">
+        </div>
+        <div class="scrollCheckType">
+            <div class="item1"></div>
+            <div class="item2"></div>
+            <div class="item3"></div>
+            <div class="item4"></div>
+            <div class="item5"></div>
+        </div>
     </div>
 </div>
 </body>
