@@ -22,6 +22,7 @@ login: string;
   }
 
   ngOnInit() {
+    localStorage.getItem('email') ? null : window.location.href = '/login'
   this.userConnect()
   }
 

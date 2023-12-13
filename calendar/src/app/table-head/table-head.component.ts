@@ -39,12 +39,12 @@ export class TableHeadComponent implements OnInit{
     if (this.data.day) this.isDay = true
     else if(!this.data.day) this.isDay = false
     this.parentValueChange.emit(this.data)
-    this.route.queryParams.subscribe((x:any)=>{
-      window.location.reload()
-    })
-      // setTimeout(()=>{
-      //   window.location.reload()
-      // },20)
+    // this.route.queryParams.subscribe((x:any)=>{
+    //   window.location.reload()
+    // })
+      setTimeout(()=>{
+        window.location.reload()
+      },20)
     console.log(this.dayInMonth)
   }
 

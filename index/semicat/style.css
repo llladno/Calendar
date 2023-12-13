@@ -1,0 +1,831 @@
+p {
+    font-size: var(--p30);
+    text-align: justify;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.adaptive {
+    width: 100%;
+    display: flex;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    position: relative;
+    left: 0px;
+    right: 0px;
+    max-width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+*{
+    --p36: 36px;
+    --p35: 35px;
+    --p30: 30px;
+    --p25: 25px;
+    --p22: 22px;
+}
+
+h1{
+    font-size: var(--p36);
+}
+
+
+
+.one {
+    background: #111111;
+    width: 5%;
+    min-height: 100%;
+}
+
+.two {
+    width: 100%;
+}
+
+.startslide img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+
+}
+
+.line {
+    filter: brightness(30%);
+    display: flex;
+    width: 100%;
+    position: relative;
+    left: 0px;
+    transition: all ease 1s;
+
+}
+
+.startslide {
+    background-size: cover;
+    height: 100vh;
+}
+
+.navbar {
+    background: black;
+    width: 40%;
+    height: 100px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.navbarconte {
+    color: white;
+    padding: 0px 10% 0px 10%;
+}
+.navbarconteparagraph{
+    font-size: 16px;
+    text-align: center;
+    margin: 15px 0px 7px 0px;
+}
+
+.navbarlink {
+    font-size: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cemicattitle {
+    display: flex;
+    align-items: center;
+    color: white;
+    height: 80%;
+    margin-left: 5%;
+    width: 40%;
+}
+
+.cemicattitle h1 {
+    margin: 0;
+    color: #FDCA00;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.cemicattitle button {
+    margin-right: 30%;
+    font-size: 30px;
+    background: #FDCA00;
+    padding: 10px 30px;
+    border-radius: 20px;
+    border: none;
+}
+
+.container {
+    margin: 80px 8%;
+}
+
+.centerAboutUs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.centerAboutUs img {
+    width: 160px;
+}
+
+.centerzap, .zapcenter {
+    display: flex;
+    justify-content: center;
+}
+
+.questions button:hover {
+    background: #fdda5f;
+}
+
+.centerzap {
+    width: 50%;
+    margin-top: 30px;
+    background: black;
+    color: white;
+    padding: 20px 20px;
+    border-radius: 20px;
+}
+
+.zapimgs {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.zapimgs img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.bgzap {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background: #111111;
+    border-radius: 20px;
+}
+
+.bgzap2 {
+    width: 90%;
+    float: right;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background: #111111;
+    border-radius: 20px;
+}
+
+.zapimgs {
+    overflow: hidden;
+}
+
+.zapline {
+    height: 100%;
+    display: flex;
+    position: relative;
+    left: 0px;
+}
+
+.zapcard {
+    margin: 0px 40px 0px 40px;
+    width: 2px;
+    background: #FDCA00;
+}
+
+.textzap {
+    width: 45%;
+    display: flex;
+    align-items: center
+}
+
+.textzap2 {
+    width: 100%;
+    display: flex;
+    align-items: center
+}
+
+.textzapP{
+    font-size: var(--p25);
+}
+
+.cardAboutUs {
+    padding-top: 20px;
+    width: 22%;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    background: black;
+}
+
+.service img {
+    width: 60%;
+}
+
+.questions {
+    display: flex;
+    background: black;
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+}
+
+.inputPlace {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputPlace p {
+    font-size: var(--p25);
+}
+
+.questions input {
+    font-size: 22px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 5px 20px;
+    height: 35px;
+    border: 2px solid white;
+}
+
+.centerAboutUs p {
+    text-align: center;
+}
+
+textarea {
+    font-size: 22px;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+.questions button {
+    margin-top: 40px;
+    border: none;
+    padding: 5px 40px;
+    background: #FDCA00;
+    border-radius: 20px;
+    font-size: 35px;
+}
+
+.centerzap h1 {
+    font-size: 32px;
+    color: #FDCA00;
+}
+
+.center button:hover {
+    background: #fdda5f;
+
+}
+
+.catalog {
+    padding: 20px;
+    border-radius: 20px;
+    display: grid;
+    width: 80%;
+    max-width: 950px;
+    background: #111111;
+}
+
+.catalogcenter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.catalogcard {
+    width: 22%;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 10px 3%;
+    background: #1F1F1FFF;
+    margin-top: 20px;
+}
+
+.catalogcard * {
+    pointer-events: none;
+}
+
+.catalogcard p {
+    color: white;
+    text-align: center;
+    margin: 0px;
+}
+
+.catalogcard img {
+    height: 168px;
+}
+
+.black {
+    width: 100%;
+    max-height: 500px;
+    padding: 20px;
+    background: #1f1f1f;
+    border-radius: 20px;
+}
+
+.catalogimgplace {
+    overflow: hidden;
+    background: #111111;
+    border-radius: 20px;
+    height: 400px;
+    max-height: 400px;
+}
+
+.catalogimgplace img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.blackcat {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    top: -101%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+.blackcat p {
+    padding-top: 15px;
+    margin: 0px;
+    color: #ffffff;
+
+}
+
+.catalogcard:hover {
+    background: #343434;
+}
+
+.catalog button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+    background: #FDCA00;
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    background: #FDCA00;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin-top: 25px;
+}
+
+.points {
+    position: fixed;
+    display: flex;
+    width: 5%;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.map {
+    width: 100%;
+    height: 300px;
+}
+
+.lastslideConteiner {
+    height: 500px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 83%;
+    margin: 30px;
+    background: #FDCA00;
+}
+
+.zapdouble, .zapdouble2 {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.zapdouble2 {
+    height: 70%;
+}
+
+.rotateel {
+    transform: rotate(270deg);
+    color: #FDCA00;
+    letter-spacing: 8px;
+    left: 120px;
+    margin: 0px;
+    text-align: center;
+    position: relative;
+}
+
+.lastslideConteiner {
+    display: grid;
+}
+
+.cars {
+    width: 210px;
+}
+
+#ques {
+    margin-top: 80px;
+}
+
+.marginlastlide{
+    margin: 0px 40px 0px 40px
+}
+
+.lastslideConteiner p {
+    line-height: 25px;
+    font-size: 22px;
+}
+
+.questions .askque{
+    font-size: 25px;
+}
+
+.selected {
+    background: #343434
+
+}
+
+.hover{
+    background: #343434 !important;
+}
+
+.marginTop{
+    margin-top: 80px;
+}
+
+@media (max-width: 1200px) {
+    .points {
+        width: 6%;
+    }
+    .inputPlace p {
+        font-size: 22px;
+    }
+
+    .textzapP{
+        font-size: 21px;
+    }
+
+    .textzap2 {
+        width: 100%;
+    }
+
+    .bgzap2 {
+        width: 80%;
+    }
+
+
+
+    .one {
+        width: 6%;
+    }
+
+    .navbarlink {
+        font-size: 18px;
+    }
+
+    .centerAboutUs img {
+        width: 150px;
+    }
+
+    .catalogcard img {
+        height: 120px;
+    }
+
+    .catalogcard p {
+        font-size: 20px;
+    }
+}
+
+    .centerAboutUs img {
+        width: 135px;
+    }
+
+    .cardAboutUs {
+        font-size: 26px;
+        border-radius: 20px;
+    }
+
+    .lastslideConteiner p {
+        font-size: 18px;
+    }
+
+@media (max-width: 1000px) {
+    .catalogcard p {
+        font-size: 16px;
+    }
+
+    .textzapP{
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 24px
+    }
+
+    .centerAboutUs img {
+        width: 120px;
+    }
+
+
+
+    .bgzap2 {
+        width: 90%;
+    }
+
+    .cars {
+        width: 150px;
+    }
+
+    .container {
+        margin: 70px 30px 80px 30px;
+    }
+    .marginTop{
+        margin-top: 70px;
+    }
+
+    .cardAboutUs {
+        font-size: 24px;
+    }
+
+
+    .startslide {
+        background: url("img3.png");
+        background-position-x: -500px;
+    }
+
+    .questions {
+        padding: 25px;
+    }
+
+    .questions p {
+        font-size: 18px;
+    }
+
+    .map {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+.lastslideConteiner {
+    margin: 20px;
+}
+
+.catalogcard img {
+    height: 90px;
+}
+
+@media (max-width: 768px) {
+    .points {
+        width: 8%;
+    }
+    .rotateel {
+        display: none;
+    }
+
+    .zapdouble, .zapdouble2 {
+        display: grid;
+        grid-column-start: 2;
+        justify-items: center;
+    }
+
+    .bgzap, .bgzap2 {
+        grid-row-start: 2;
+        width: 100%;
+    }
+
+    .textzap, .textzap2 {
+        grid-column-start: 1;
+        width: 100%;
+    }
+
+    .textzap p, .textzap2 p {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 20px
+    }
+
+    .one {
+        width: 8%;
+    }
+
+    .navbar {
+        width: 70%;
+    }
+
+    .cemicattitle {
+        width: 70%;
+    }
+
+    .cemicattitle button {
+        margin-right: 25%;
+        font-size: var(--p25);
+        padding: 8px 26px;
+        border-radius: 20px;
+    }
+
+    .centerAboutUs img {
+        width: 70px;
+    }
+
+    .cardAboutUs {
+        width: 23%;
+        font-size: 18px;
+    }
+
+
+
+    .questions button {
+        margin-top: 25px;
+        border: none;
+        padding: 5px 35px;
+        background: #FDCA00;
+        border-radius: 20px;
+        font-size: 28px;
+    }
+
+    .questions {
+        padding: 20px;
+        display: grid;
+        justify-items: center;
+    }
+
+    .centerzap {
+        width: 75%;
+    }
+
+    .centerzap h1 {
+        font-size: 24px;
+    }
+
+    .catalog {
+        max-width: 660px;
+        width: 100%;
+    }
+
+    .catalogcard {
+        width: 100%;
+    }
+
+    .catalogcenter {
+        display: grid;
+        row-gap: 15px;
+        width: 100%;
+        grid-template-columns: 45% 45%;
+    }
+
+    .lastslideConteiner p {
+        line-height: 25px;
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 480px) {
+    .one {
+        display: none;
+    }
+
+    .two {
+        width: 100%;
+    }
+
+    .navbar {
+        width: 90%;
+    }
+
+    .navbarlink {
+        font-size: 15px;
+    }
+
+    .cemicattitle {
+        width: 90%;
+    }
+
+    .cemicattitle button {
+        margin-right: 20%;
+        font-size: 20px;
+        padding: 6px 22px;
+        border-radius: 20px;
+    }
+
+    .centerAboutUs {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        row-gap: 20px;
+    }
+
+    .container {
+        margin: 40px 15px 40px 15px;
+    }
+
+    .marginTop{
+        margin-top: 30px;
+    }
+
+    .cardAboutUs {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    .centerzap {
+        width: 85%;
+    }
+
+
+    .catalogcard img {
+        height: 80px;
+    }
+
+    .startslide {
+        background: url("img3.png");
+        background-position-x: -650px;
+    }
+
+    .zapcard {
+        margin: 0px 20px 0px 20px;
+        width: 2px;
+        background: #FDCA00;
+    }
+
+    .centerzap {
+        padding: 20px 30px;
+    }
+
+    .inputPlace {
+        display: block;
+    }
+    .questions{
+        padding: 10px;
+    }
+
+    .questions button {
+        margin-top: 20px;
+        border: none;
+        padding: 5px 30px;
+        background: #FDCA00;
+        border-radius: 20px;
+        font-size: 20px;
+    }
+
+    .service img {
+        width: 90%;
+    }
+    .marginlastlide{
+        height: 100%;
+        margin: 0px 20px;
+    }
+
+    .lastslideConteiner p {
+        font-size: 13px;
+    }
+}

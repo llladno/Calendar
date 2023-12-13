@@ -30,7 +30,7 @@ function changePhoto(event,id) {
             event.target.classList.add('selectedSite')
         }
         if (id === 2) {
-            exampleWorks.innerHTML = '<img src="assets/slider/semicat.png">'
+            exampleWorks.innerHTML = '<img src="assets/slider/semicat2.png">'
             event.target.classList.add('selectedSite')
         }
     }

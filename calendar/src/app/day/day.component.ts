@@ -124,7 +124,7 @@ export class DayComponent implements OnInit {
       let h = 1
       let count = 0
 
-      for (let n = 0; n < (dif / 10)-1; n++) {
+      for (let n = 0; n < (dif / 10); n++) {
         let c: any = n
         if (+userData.devValue.timeOnDev.minutes + n * 10 > 59) {
           console.log(n)
