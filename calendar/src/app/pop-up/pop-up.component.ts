@@ -35,6 +35,15 @@ export class PopUpComponent implements OnInit {
     if (this.data.time.length === 1) {
       this.data.time = "0" + this.data.time
     }
+
+    window.addEventListener('keydown', (e)=>{
+      if (e.keyCode === 27) {
+        let appRootClass: any = document.getElementsByClassName('appRootClass')[0]
+        appRootClass.style.removeProperty('filter')
+        this.dialogRef.closeAll()
+      }
+    })
+
   }
 
   submitForm() {

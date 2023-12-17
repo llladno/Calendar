@@ -312,7 +312,7 @@ h1 {
     height: 95vh;
     margin: 0 200px;
     display: grid;
-    align-items: center;
+    align-items: center;0
 }
 
 .myWorksGrid{
