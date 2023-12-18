@@ -1,4 +1,11 @@
+.calendarPlace{
+  width: 100%;
+}
+
+
+
 .timeGrid{
+  width: 95%;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(25, 40px);
@@ -41,5 +48,18 @@ h2{
 .mat-mdc-dialog-container{
   position: relative !important;
   z-index: 10;
+}
+
+.userPlace {
+  grid-column-start: 1;
+}
+
+.TodoInDay{
+  width: 60px;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: last;
+  background: white;
+  transition: all 0.5s ease-in-out;
 }
 

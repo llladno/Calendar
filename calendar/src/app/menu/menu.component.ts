@@ -14,8 +14,10 @@ export class MenuComponent implements OnInit{
   constructor(
     public userLogin: ElementRef,
     public bar: ElementRef,
+    public barElem: ElementRef,
     public rotatePointMenu: ElementRef,
     public pointsMenuButton: ElementRef,
+    public transitionMainPlaces: ElementRef,
     private http: HttpClient
   ) {}
   ngOnInit() {
@@ -33,6 +35,7 @@ export class MenuComponent implements OnInit{
     }
   }
   menubar(){
+    let BarElem = this.barElem.nativeElement
     let bar = this.bar.nativeElement.querySelector('.menuBorder')
     let userLogin = this.userLogin.nativeElement.querySelector('.userLogin')
     let rotatePointMenu = this.rotatePointMenu.nativeElement.querySelector('.rotatePointMenu')
@@ -40,23 +43,27 @@ export class MenuComponent implements OnInit{
     let pointsMenuButtonLogout = this.pointsMenuButton.nativeElement.querySelectorAll('.pointsMenuButtonLogout')[0]
 
     if (this.flip){
+      BarElem.style.width = '300px'
       bar.style.width = '100%'
       userLogin.style.opacity = '1'
       userLogin.style.width = '50%'
       rotatePointMenu.style.transform = 'rotate(0)'
-
+      // transitionMainPlaces.classList.remove('notExpanded')
+      // transitionMainPlaces.classList.add('fullExpanded')
       for (let b = 0; b< pointsMenuButton.length;b++) pointsMenuButton[b].style.opacity = '1'
       pointsMenuButtonLogout.style.opacity = '1'
       this.flip = false
     }
     else{
+      BarElem.style.width = '150px'
       bar.style.width = '100px'
       userLogin.style.opacity = '0'
       userLogin.style.width = '0'
       rotatePointMenu.style.transform = 'rotate(90deg)'
       for (let b = 0; b< pointsMenuButton.length;b++) pointsMenuButton[b].style.opacity = '0'
       pointsMenuButtonLogout.style.opacity = '0'
-
+      // transitionMainPlaces.classList.remove('fullExpanded')
+      // transitionMainPlaces.classList.add('notExpanded')
       this.flip = true
     }
 

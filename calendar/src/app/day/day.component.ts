@@ -24,6 +24,9 @@ export class DayComponent implements OnInit {
   time: Array<object> = [];
   isDay:boolean = false
   dayData: DayData
+  todoInfo: any = {
+    status: 'not open'
+  }
 
   constructor(private route: ActivatedRoute,
               private dialogRef: MatDialog,
@@ -176,5 +179,12 @@ export class DayComponent implements OnInit {
       })
     }
     }
+  }
+
+
+
+
+  todoDay(status:any){
+    return status
   }
 }

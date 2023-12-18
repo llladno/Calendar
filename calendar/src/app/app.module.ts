@@ -19,6 +19,7 @@ import { TableHeadComponent } from './table-head/table-head.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { SelectBarComponent } from './table-head/select-bar/select-bar.component';
+import { TodoComponent } from './day/todo/todo.component';
 
 
 
@@ -45,6 +46,7 @@ const appRoutes: Routes =[
     TableHeadComponent,
     PopUpComponent,
     SelectBarComponent,
+    TodoComponent,
   ],
   imports: [
     BrowserModule,

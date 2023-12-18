@@ -79,7 +79,6 @@ h1 {
 }
 
 #capybara {
-    top: -3px;
     position: absolute;
     z-index: 3;
     width: 100%;
@@ -312,7 +311,7 @@ h1 {
     height: 95vh;
     margin: 0 200px;
     display: grid;
-    align-items: center;0
+    align-items: center;
 }
 
 .myWorksGrid{
