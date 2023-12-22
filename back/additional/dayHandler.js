@@ -5,7 +5,7 @@ module.exports = function (userData, dataString, body){
             console.log('equal')
             sendedData.push(x[dataString])
         }
-        console.log(Object.keys(x))
+        // console.log(Object.keys(x))
     })
     sendedData.forEach((x)=>{
         let changeValueOn

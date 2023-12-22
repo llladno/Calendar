@@ -20,6 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { SelectBarComponent } from './table-head/select-bar/select-bar.component';
 import { TodoComponent } from './day/todo/todo.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 
@@ -48,15 +49,16 @@ const appRoutes: Routes =[
     SelectBarComponent,
     TodoComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-    MatDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule.forRoot(appRoutes),
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        MatDialogModule,
+        MatCheckboxModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

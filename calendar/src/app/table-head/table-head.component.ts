@@ -19,7 +19,8 @@ export class TableHeadComponent implements OnInit{
   isDay: boolean = false;
   dayInMonth: any
 
-  constructor(private route:ActivatedRoute,
+  constructor(
+    private route:ActivatedRoute,
   private router: Router) {
   }
 
@@ -33,15 +34,12 @@ export class TableHeadComponent implements OnInit{
 
   nextMonth(){
 
-    console.log(this.data)
     this.loading = true
     this.data.month = this.route.snapshot.queryParams.month
     if (this.data.day) this.isDay = true
     else if(!this.data.day) this.isDay = false
     this.parentValueChange.emit(this.data)
-    // this.route.queryParams.subscribe((x:any)=>{
-    //   window.location.reload()
-    // })
+
       setTimeout(()=>{
         window.location.reload()
       },20)
@@ -59,9 +57,6 @@ export class TableHeadComponent implements OnInit{
       return new Date(year, month, 0).getDate();
     }
     this.dayInMonth = getDaysInMonth(+this.data.year,+this.data.month)
-    console.log(+this.data.day)
-    console.log(this.dayInMonth)
-    console.log(+this.data.day > +this.dayInMonth-1)
     if (direction === 'next'){
       if (this.data.month > 11 && +this.data.day+1 > +this.dayInMonth) {
         console.log('Worked')

@@ -19,9 +19,8 @@
 .placeArrows {
   display: flex;
   height: 100%;
-  width: 100%;
+  width: 80px;
   align-items: center;
-  pointer-events: none;
 }
 
 .placeTodo{
@@ -31,6 +30,38 @@
 }
 
 .placeTodo *{
-  pointer-events: none;
 }
 
+.todo{
+  width: 100%;
+}
+
+.taskPlace{
+  margin: 20px 0;
+  min-height: 30px;
+}
+.taskDiv{
+  width: 90%;
+  display: flex;
+  border-bottom: 1px solid #646464;
+  align-items: center;
+}
+
+.taskAddInput{
+  border: none;
+  /*border-bottom: 2px solid #656565;*/
+  border-radius: 5px;
+  padding: 8px 13px;
+  background: #e3e3e3;
+}
+
+.taskAddInput:focus{
+  outline:none;
+  border: none;
+}
+
+.taskDiv p{
+  white-space: normal;
+  width: 100%;
+  margin-left: 10px;
+}

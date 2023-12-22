@@ -3,14 +3,14 @@ const app = express()
 const PORT = 3002
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const {MongoClient} = require('mongodb');
+const {MongoClient, Collection} = require('mongodb');
 let dayHandler = require("./additional/dayHandler")
 const {cl, date, m} = require("yarn/lib/cli");
 const {timer} = require("./additional/timer");
 // Local Server : 'mongodb://localhost:27017'
 // const urlDB = 'mongodb://127.0.0.1:27017/'
 // const urlDB = 'mongodb://myUserAdmin:abc123@109.68.215.157:27017/?authMechanism=DEFAULT'
-// const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
+const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
 
 //Reomote server: 'mongodb://26.226.199.170:27017'
 // const urlDB = 'mongodb://26.226.199.170:27017'
@@ -95,6 +95,100 @@ app.post('/newTask', async (req, res) => {
     collection.updateOne(filter, {
         $push:{"user.data": array[0]}
     }).catch((err)=>console.log(err))
+})
+
+app.post('/newTaskTodoInDay', async (req, res) => {
+    await connect()
+    console.log('newTaskTodo')
+    let body = req.body.requestData
+    console.log(body)
+    let filter = {"user.email": req.body.email}
+    let dataString = `user.todo.${body.date.day},${body.date.month},${body.date.year}.type`
+    let fullDate = `${body.date.day}-${body.date.month}-${body.date.year}`
+    let array = []
+    let data = {
+        task: body.tasks,
+        idTask: body.idTask,
+        dayData: body.date,
+        fullDate: fullDate,
+        // color: body.color
+    }
+    console.log(data)
+    array.push( {[dataString]: data})
+    console.log(array)
+    //
+
+    // let fineee = collection.find({"user.todo": {[dataString]: {"type": "task"}}})
+    let fineee = collection.find({[dataString]: "task"})
+    let result = await fineee.toArray();
+    if (result) {
+        collection.updateOne(filter, {
+            $push:{[`user.todo.${body.date.day},${body.date.month},${body.date.year}`]: data}
+        }).catch((err)=>console.log(err))
+    }
+    else {
+        collection.updateOne(filter, {
+            $set:{[`user.todo.${body.date.day},${body.date.month},${body.date.year}`]: [data]}
+        }).catch((err)=>console.log(err))
+    }
+    console.log(dataString)
+    console.log(result)
+
+
+
+    // collection.updateOne(filter, {
+    //     $set:{"user.todo": array[0]}
+    // }).catch((err)=>console.log(err))
+
+
+})
+
+
+
+app.post('/getDayInfoTodo', async (req, res) => {
+    await connect()
+    console.log(req.body)
+    let body = req.body
+    let dataString = `${body.data.day},${body.data.month},${body.data.year}`
+    let Userfilter = {"user.email": body.email}
+    const cursor = collection.find(Userfilter)
+
+    const result = await cursor.toArray();
+    let UserData = result[0].user.todo
+    let dataToSend = []
+
+    console.log(UserData)
+
+    // UserData.forEach((x)=>{
+    //     if (x[dataString]){
+    //         dataToSend.push(x[dataString])
+    //     }
+    // })
+    console.log()
+    // let data = dayHandler(UserData, dataString)
+    // await dayHandler(UserData, dataString, body)
+    result ? res.status(200).send({status: 'valid', userData: UserData[dataString]})
+        : res.status(200).send({status: 'unvalid'});
+    client.close()
+})
+
+
+app.post('/deleteTaskTodoInDay', async (req, res) => {
+    await connect()
+    console.log(req.body)
+    let body = req.body
+
+    collection.updateOne({"user.email": "ok@"},{$pull: {[`user.todo.${body.date.day},${body.date.month},${body.date.year}`]: {"idTask": body.idTask}}}).then((x)=>{
+        if (x.modifiedCount!=0){
+            res.status(200).send({status: 'delete successful'})
+        }
+    })
+    // console.log(UserData)
+    // // let data = dayHandler(UserData, dataString)
+    // // await dayHandler(UserData, dataString, body)
+    // result ? res.status(200).send({status: 'valid', userData: dataToSend})
+    //     : res.status(200).send({status: 'unvalid'});
+    // client.close()
 })
 
 app.get('/',async (req,res)=>{
