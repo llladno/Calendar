@@ -9,8 +9,10 @@ const {cl, date, m} = require("yarn/lib/cli");
 const {timer} = require("./additional/timer");
 // Local Server : 'mongodb://localhost:27017'
 // const urlDB = 'mongodb://127.0.0.1:27017/'
-// const urlDB = 'mongodb://myUserAdmin:abc123@109.68.215.157:27017/?authMechanism=DEFAULT'
-const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
+const urlDB = 'mongodb://myUserAdmin:abc123@109.68.215.157:27017/?authMechanism=DEFAULT'
+
+
+// const urlDB = 'mongodb://admin:123@localhost:27017/?authMechanism=DEFAULT'
 
 //Reomote server: 'mongodb://26.226.199.170:27017'
 // const urlDB = 'mongodb://26.226.199.170:27017'
